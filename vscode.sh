@@ -12,15 +12,12 @@ if [ `whoami` != "root" ];then
     echo "please use root run!"
     exit 1
 fi
+
 pushd /tmp >/dev/null
 fileUrl="https://vscode.cdn.azure.cn/stable/26076a4de974ead31f97692a0d32f90d735645c0/code-stable-1576682093.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
-if [ -f $fileName ];then
-    echo "file existed,just while install !"
-else
-    wget -c $fileUrl -O $fileName || exit 1
-fi
+wget -c $fileUrl -O $fileName || exit 1
 
 tar -zxvf $fileName -C /opt/
 
