@@ -78,4 +78,4 @@ EOF
 ln -s /opt/Postman/postman.desktop /usr/share/applications/postman.desktop
 
 ln -s /opt/Postman/app/Postman /usr/local/bin/postman
-echo "install success!"
+echo "install postman success!"
