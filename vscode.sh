@@ -19,7 +19,7 @@ fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
 wget -c $fileUrl -O $fileName || exit 1
 
-tar -zxvf $fileName -C /opt/
+tar --no-same-owner -zxvf $fileName -C /opt/
 
 popd >/dev/null
 
@@ -90,6 +90,8 @@ Name=New Empty Window
 Exec=/opt/VSCode-linux-x64/code --no-sandbox --new-window %F
 Icon=/opt/VSCode-linux-x64/vscode.svg
 EOF
+
+rm -rf /usr/share/applications/code.desktop
 
 ln -s  /opt/VSCode-linux-x64/vscode.desktop /usr/share/applications/code.desktop
 ln -s /opt/VSCode-linux-x64/code /usr/local/bin/code
