@@ -8,7 +8,7 @@ if [ `whoami` != "root" ]; then
 fi
 
 pushd /tmp >/dev/null
-file_url="https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz"
+file_url="https://dl.google.com/go/go1.14.linux-amd64.tar.gz"
 file_name=`echo $file_url | awk -F '/' '{print $NF}'`
 
 wget -c $file_url
