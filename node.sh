@@ -8,7 +8,7 @@ if [ `whoami` != "root" ]; then
 fi
 
 pushd /tmp >/dev/null
-file_url="https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz"
+file_url="https://nodejs.org/dist/v13.13.0/node-v13.13.0-linux-x64.tar.xz"
 file_name=`echo $file_url | awk -F '/' '{print $NF}'`
 
 wget -c $file_url
