@@ -14,7 +14,7 @@ if [ `whoami` != "root" ];then
 fi
 
 pushd /tmp >/dev/null
-fileUrl="https://vscode.cdn.azure.cn/stable/91899dcef7b8110878ea59626991a18c8a6a1b3e/code-stable-1595520402.tar.gz"
+fileUrl="https://vscode.cdn.azure.cn/stable/e790b931385d72cf5669fcefc51cdf65990efa5d/code-stable-1599744987.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
 wget -c $fileUrl -O $fileName || exit 1
