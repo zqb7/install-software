@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 
-#######################
-# Author: bzyy
-# Version: 1.0
-# Desc: auto install firefox
-# Date: 2020.09.11
-######################
-
 if [ `whoami` != "root" ];then
     echo "please use root run!"
     exit 1
 fi
 
 pushd /tmp >/dev/null
-fileUrl="https://download-ssl.firefox.com.cn/releases/firefox/esr/78.2/zh-CN/Firefox-latest-x86_64.tar.bz2"
+fileUrl="https://download-installer.cdn.mozilla.net/pub/firefox/releases/83.0/linux-x86_64/zh-CN/firefox-83.0.tar.bz2"
 fileName="Firefox-latest-x86_64.tar.bz2"
 
 wget -c $fileUrl -O $fileName || exit 1
