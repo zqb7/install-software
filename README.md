@@ -7,6 +7,6 @@ One-click installation of common software
 > This script is bound to the domain name: sh.sadeye.cn
 
 ### Usage
-
-- `curl -sSL sh.sadeye.cn/go.sh|sudo bash`
-- `curl -sSL sh.sadeye.cn/vscode.sh|sudo bash`
+> You maybe need `sudo`, example: `curl -sSL sh.sadeye.cn/example.sh| sudo bash`
+- `curl -sSL sh.sadeye.cn/go.sh| bash`
+- `curl -sSL sh.sadeye.cn/vscode.sh| bash`

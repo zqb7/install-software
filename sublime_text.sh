@@ -1,26 +1,15 @@
 #!/usr/bin/env bash
 
-#######################
-# Author: bzyy
-# Version: 1.0
-# Desc: auto install sublime text
-# Date: 2020.01.08
-######################
-
-if [[ `whoami` != "root" ]]; then
-    echo "please use root run it"
-    exit 1
-fi
-
 pushd /tmp >/dev/null
 file_url="https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2"
 file_name=`echo $file_url | awk -F '/' '{print $NF}'`
 
-wget -c $file_url
+wget -c $file_url && \
+    rm -rf /opt/sublime_text*  && \  # delete all sublime_text like version 2 or 3
+    tar -jxvf $file_name -C /opt/
 
-rm -rf /opt/sublime_text*   # delete all sublime_text like version 2 or 3
 
-tar -jxvf $file_name -C /opt/ ||exit 1
+[ $? -eq 0 ] || echo "install faild";exit 1 
 
 pushd /opt >/dev/null
 mv sublime_text* sublime_text

@@ -1,25 +1,13 @@
 #!/usr/bin/env bash
 
-#######################
-# Author: bzyy
-# Version: 1.0
-# Desc: auto install vscode
-# Date: 2020.01.08
-######################
-
-
-if [ `whoami` != "root" ];then
-    echo "please use root run!"
-    exit 1
-fi
-
 pushd /tmp >/dev/null
 fileUrl="https://vscode.cdn.azure.cn/stable/e790b931385d72cf5669fcefc51cdf65990efa5d/code-stable-1599744987.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
-wget -c $fileUrl -O $fileName || exit 1
+wget -c $fileUrl -O $fileName && \
+    tar --no-same-owner -zxvf $fileName -C /opt/
 
-tar --no-same-owner -zxvf $fileName -C /opt/
+[ $? -eq 0 ] || echo "install faild";exit 1 
 
 popd >/dev/null
 

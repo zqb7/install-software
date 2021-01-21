@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-if [ `whoami` != "root" ];then
-    echo "please use root run!"
-    exit 1
-fi
-
 pushd /tmp >/dev/null
 fileUrl="https://download-installer.cdn.mozilla.net/pub/firefox/releases/83.0/linux-x86_64/zh-CN/firefox-83.0.tar.bz2"
 fileName="Firefox-latest-x86_64.tar.bz2"
@@ -12,6 +7,8 @@ fileName="Firefox-latest-x86_64.tar.bz2"
 wget -c $fileUrl -O $fileName || exit 1
 
 tar -jxvf $fileName -C /opt/
+
+[ $? -eq 0 ] || echo "install faild";exit 1 
 
 popd >/dev/null
 

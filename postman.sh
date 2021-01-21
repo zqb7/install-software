@@ -1,24 +1,14 @@
 #!/usr/bin/env bash
 
-#######################
-# Author: bzyy
-# Version: 1.0
-# Desc: auto install postman
-# Date: 2020.01.08
-######################
-
-if [ `whoami` != "root" ];then
-    echo "please use root run!"
-    exit 1
-fi
 
 pushd /tmp >/dev/null
 fileUrl="https://dl.pstmn.io/download/latest/linux64"
 fileName="postman-latest.tar.gz"
 
-wget -c $fileUrl -O $fileName || exit 1
+wget -c $fileUrl -O $fileName && \
+	tar -zxvf $fileName -C /opt/
 
-tar -zxvf $fileName -C /opt/
+[ $? -eq 0 ] || echo "install faild";exit 1 
 
 popd >/dev/null
 
