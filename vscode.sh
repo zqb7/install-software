@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 pushd /tmp >/dev/null
-fileUrl="https://vscode.cdn.azure.cn/stable/e790b931385d72cf5669fcefc51cdf65990efa5d/code-stable-1599744987.tar.gz"
+fileUrl="https://vscode.cdn.azure.cn/stable/a3859d4ba2f3e577a159bc91e3074c5d85c0523/code-stable-x64-1608137260.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
 wget -c $fileUrl -O $fileName && \
