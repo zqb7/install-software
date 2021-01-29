@@ -14,7 +14,7 @@ fi
 
 mv sublime_text* sublime_text
 
-cat <<EOF > /opt/sublime_text.desktop
+cat <<EOF > /opt/sublime_text/sublime_text.desktop
 [Desktop Entry]
 Version=1.0
 Type=Application
