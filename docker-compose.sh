@@ -8,5 +8,7 @@ wget -c https://github.com/docker/compose/releases/download/1.28.0/docker-compos
     chmod +x docker-compose && \
     cp docker-compose /usr/bin/docker-compose && \
     echo "install success"
-[ $? -eq 0 ] || echo "install faild"
+if [ $? -ne 0 ];then 
+    echo "install faild"
+fi
 popd
