@@ -12,7 +12,7 @@ if [ $? -ne 0 ];then
     exit 1 
 fi
 
-mv sublime_text* sublime_text
+mv sublime_text_3 sublime_text
 
 cat <<EOF > /opt/sublime_text/sublime_text.desktop
 [Desktop Entry]
