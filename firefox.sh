@@ -8,7 +8,10 @@ wget -c $fileUrl -O $fileName || exit 1
 
 tar -jxvf $fileName -C /opt/
 
-[ $? -eq 0 ] || echo "install faild";exit 1 
+if [ $? -ne 0 ];then 
+    echo "install faild"
+    exit 1
+fi
 
 popd >/dev/null
 
