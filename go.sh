@@ -10,7 +10,10 @@ cd /tmp && \
     rm -rf /usr/local/go && \
     tar -C /usr/local -xzf $file_name
 
-[ $? -eq 0 ] || echo "install faild";exit 1 
+if [ $? -ne 0 ];then 
+    echo "install faild"
+    exit 1
+fi
 
 cat /etc/bash.bashrc|grep -q ":/usr/local/go/bin" || echo "export PATH=\$PATH:/usr/local/go/bin" >>/etc/bash.bashrc
 echo "install go success!"
