@@ -4,7 +4,7 @@ file_url="https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
 file_name=`echo $file_url | awk -F '/' '{print $NF}'`
 
 cd /tmp && wget -c $file_url && \
-    rm -rf /opt/sublime_text*  && \  # delete all sublime_text like version 2 or 3
+    rm -rf /opt/sublime_text*  && \ 
     tar -jxvf $file_name -C /opt/
 
 if [ $? -ne 0 ];then 
