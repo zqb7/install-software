@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-pushd /tmp >/dev/null
 fileUrl="https://vscode.cdn.azure.cn/stable/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/code-stable-x64-1608137260.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
-wget -c $fileUrl -O $fileName && \
+cd /tmp && wget -c $fileUrl -O $fileName && \
     tar --no-same-owner -zxvf $fileName -C /opt/
 
-[ $? -eq 0 ] || echo "install faild";exit 1 
-
-popd >/dev/null
+if [ $? -ne 0 ];then 
+    echo "install faild"
+    exit 1 
+fi
 
 # 桌面图标
 cat <<EOF >/opt/VSCode-linux-x64/vscode.svg
