@@ -14,8 +14,6 @@ fi
 
 mv sublime_text* sublime_text
 
-popd >/dev/null
-
 cat <<EOF > /opt/sublime_text.desktop
 [Desktop Entry]
 Version=1.0
