@@ -11,7 +11,10 @@ wget -c $file_url  && \
     rm -rf /opt/node && \
     mv /opt/${file_name/.tar.xz} /opt/node
     
-[ $? -eq 0 ] || echo "install faild";exit 1 
+if [ $? -ne 0 ];then 
+    echo "install faild"
+    exit 1
+fi
 
 ln -s /opt/node/bin/node /usr/local/bin/node
 ln -s /opt/node/bin/npm /usr/local/bin/npm
