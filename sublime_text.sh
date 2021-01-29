@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-pushd /tmp >/dev/null
 file_url="https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2"
 file_name=`echo $file_url | awk -F '/' '{print $NF}'`
 
-wget -c $file_url && \
+cd /tmp && wget -c $file_url && \
     rm -rf /opt/sublime_text*  && \  # delete all sublime_text like version 2 or 3
     tar -jxvf $file_name -C /opt/
 
+if [ $? -ne 0 ];then 
+    echo "install faild"
+    exit 1 
+fi
 
-[ $? -eq 0 ] || echo "install faild";exit 1 
-
-pushd /opt >/dev/null
 mv sublime_text* sublime_text
 
 popd >/dev/null
