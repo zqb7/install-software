@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-
-pushd /tmp >/dev/null
 fileUrl="https://dl.pstmn.io/download/latest/linux64"
 fileName="postman-latest.tar.gz"
 
-wget -c $fileUrl -O $fileName && \
-	tar -zxvf $fileName -C /opt/
+cd /tmp && \
+   wget -c $fileUrl -O $fileName && \
+   tar -zxvf $fileName -C /opt/
 
-[ $? -eq 0 ] || echo "install faild";exit 1 
-
-popd >/dev/null
+if [ $? -ne 0 ];then 
+    echo "install faild"
+    exit 1
+fi
 
 # 桌面图标
 cat <<EOF >/opt/Postman/postman.svg
