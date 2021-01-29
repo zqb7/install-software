@@ -37,6 +37,8 @@ Name=New File
 Exec=/opt/sublime_text/sublime_text --command new_file
 OnlyShowIn=Unity;
 EOF
+
+rm /usr/share/applications/sublime_text.desktop
 ln -s /opt/sublime_text_3/sublime_text.desktop /usr/share/applications/sublime_text.desktop
 
 cat <<EOF > /usr/bin/subl  && chmod +x /usr/bin/subl
