@@ -1,15 +1,21 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # auto install nodejs
 
-pushd /tmp >/dev/null
-file_url="https://nodejs.org/dist/v13.13.0/node-v13.13.0-linux-x64.tar.xz"
-file_name=`echo $file_url | awk -F '/' '{print $NF}'`
+VERSION="13.13.0"
 
-wget -c $file_url  && \
-    tar --no-same-owner -xvf $file_name -C /opt/ && \
+if [ -n "$1" ];then
+    VERSION=$1
+fi
+
+
+FILEURL="https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.xz"
+FILENAME=node-v${VERSION}-linux-x64.tar.xz
+
+cd /tmp && wget -c $FILEURL  && \
+    tar --no-same-owner -xvf $FILENAME -C /opt/ && \
     rm -rf /opt/node && \
-    mv /opt/${file_name/.tar.xz} /opt/node
+    mv /opt/${FILENAME/.tar.xz} /opt/node
     
 if [ $? -ne 0 ];then 
     echo "install faild"
@@ -20,6 +26,4 @@ ln -s /opt/node/bin/node /usr/local/bin/node
 ln -s /opt/node/bin/npm /usr/local/bin/npm
 ln -s /opt/node/bin/npx /usr/bin/npx
 
-popd >/dev/null
-
-echo "install go success!"
+echo "install nodejs success!"
