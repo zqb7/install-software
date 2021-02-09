@@ -1,14 +1,18 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# auto install go
+VERSION="1.15.6"
 
-file_url="https://dl.google.com/go/go1.15.6.linux-amd64.tar.gz"
-file_name=`echo $file_url | awk -F '/' '{print $NF}'`
+if [ -n "$1" ];then
+    VERSION=$1
+fi
+
+FILEURL="https://dl.google.com/go/go${VERSION}.linux-amd64.tar.gz"
+FILENAME=go${VERSION}.linux-amd64.tar.gz
 
 cd /tmp && \ 
-    wget -c $file_url && \
+    wget -c $FILEURL && \
     rm -rf /usr/local/go && \
-    tar -C /usr/local -xzf $file_name
+    tar -C /usr/local -xzf $FILENAME
 
 if [ $? -ne 0 ];then 
     echo "install faild"
@@ -16,4 +20,6 @@ if [ $? -ne 0 ];then
 fi
 
 cat /etc/bash.bashrc|grep -q ":/usr/local/go/bin" || echo "export PATH=\$PATH:/usr/local/go/bin" >>/etc/bash.bashrc
+/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.io,direct
+/usr/local/go/bin/go env -w GO111MODULE=on
 echo "install go success!"
