@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo $SUDO_USER
-
 VERSION="3.9.0"
 
 if [ -n "$1" ];then VERSION=$1; fi
