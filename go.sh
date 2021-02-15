@@ -14,8 +14,8 @@ cd /tmp && wget -c $FILEURL && \
 if [ $? -ne 0 ];then echo "install faild";fi
 
 cat /etc/bash.bashrc|grep -q ":/usr/local/go/bin" || echo "export PATH=\$PATH:/usr/local/go/bin" >>/etc/bash.bashrc
-/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.io,direct
+/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.cn,direct
 /usr/local/go/bin/go env -w GO111MODULE=on
-su $SUDO_USER -c "/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.io,direct"
+su $SUDO_USER -c "/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.cn,direct"
 su $SUDO_USER -c "/usr/local/go/bin/go env -w GO111MODULE=on"
 echo "install go success!"
