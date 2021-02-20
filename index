@@ -1,0 +1,11 @@
+code-server.sh
+docker-compose.sh
+firefox.sh
+go.sh
+hugo.sh
+node.sh
+ohmyzsh.sh
+postman.sh
+protoc.sh
+sublime_text.sh
+vscode.sh
