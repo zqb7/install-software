@@ -28,6 +28,7 @@ jobs:
           EOF
       - name: commit
         run: |
+          [ -f index ] || touch index && git add index
           git config user.name  'github-actions'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -am "auto"
