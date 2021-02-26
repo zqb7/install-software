@@ -7,5 +7,7 @@ node.sh
 ohmyzsh.sh
 postman.sh
 protoc.sh
+rclone.sh
 sublime_text.sh
+syncthing.sh
 vscode.sh
