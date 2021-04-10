@@ -79,7 +79,8 @@ class Robot(object):
         pass
 
     def node(self):
-        pass
+        with open("node.sh","r+") as f:
+            self._change_version_tag_github(f,"nodejs/node")
 
     def ohmyzsh(self):
         pass
@@ -88,19 +89,34 @@ class Robot(object):
         pass
 
     def protoc(self):
-        pass
+        with open("node.sh","r+") as f:
+            self._change_version_tag_github(f,"protocolbuffers/protobuf")
 
     def rclone(self):
-        pass
+        with open("rclone.sh","r+") as f:
+            self._change_version_tag_github(f,"rclone/rclone")
 
     def sublime_text(self):
         pass
 
     def syncthing(self):
-        pass
+        with open("rclone.sh","r+") as f:
+            self._change_version_tag_github(f,"syncthing/syncthing")
 
     def vscode(self):
-        pass
+        ack = self.req.get('https://code.visualstudio.com/sha/download?build=stable&os=linux-x64', allow_redirects=False)
+        if ack.status_code == 302:
+            real_download_url = ack.headers.get('Location')
+            if real_download_url.endswith('.tar.gz'):
+                with open('vscode.sh', 'r+') as f:
+                    lines = f.readlines()
+                    for index,line  in enumerate(lines):
+                        if line.startswith('fileUrl') and real_download_url != line.split('=')[-1].strip('\n').strip('"'):
+                            lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url)
+                            f.seek(0)
+                            f.truncate()
+                            f.writelines(lines)
+                            self.changed.setdefault(f.name, real_download_url.split('/')[-2][:5])
             
     
     # 只用于修改从github检查版本号的脚本文件
