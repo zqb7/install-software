@@ -100,7 +100,7 @@ class Robot(object):
         pass
 
     def syncthing(self):
-        with open("rclone.sh","r+") as f:
+        with open("syncthing.sh","r+") as f:
             self._change_version_tag_github(f,"syncthing/syncthing")
 
     def vscode(self):
