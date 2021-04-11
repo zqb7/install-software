@@ -57,7 +57,7 @@ class Robot(object):
     def go(self):
         ack = self.req.get('https://golang.org/dl/')
         if ack.status_code == 200:
-            match = re.search(r'.*download downloadBox.*go(.*)\.linux-amd64.*gz"',r.text)
+            match = re.search(r'.*download downloadBox.*go(.*)\.linux-amd64.*gz"',ack.text)
             if match:
                 version = match.group(1)
                 with open("go.sh", "r+") as f:
@@ -137,7 +137,7 @@ class Robot(object):
         url = 'https://api.github.com/repos/{name}/releases/latest'.format(name=name)
         ack = self.req.get(url=url)
         if ack.status_code == 200:
-            return ack.json()['name']
+            return ack.json()['tag_name']
 
 if __name__ == "__main__":
     robot = Robot()
