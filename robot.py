@@ -89,7 +89,7 @@ class Robot(object):
         pass
 
     def protoc(self):
-        with open("node.sh","r+") as f:
+        with open("protoc.sh","r+") as f:
             self._change_version_tag_github(f,"protocolbuffers/protobuf")
 
     def rclone(self):
