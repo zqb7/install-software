@@ -46,7 +46,7 @@ class Robot(object):
                 with open("firefox.sh", "r+") as f:
                     lines = f.readlines()
                     for index,line in enumerate(lines):
-                        if line.startswith("fileUrl") and version != line.split('=')[-1].strip('\n').strip('"'):
+                        if line.startswith("fileUrl") and real_download_url != line.split('=')[-1].strip('\n').strip('"'):
                             lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url)
                             f.seek(0)
                             f.truncate()
