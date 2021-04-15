@@ -1,5 +1,6 @@
 code-server.sh
 docker-compose.sh
+filezilla.sh
 firefox.sh
 go.sh
 hugo.sh
