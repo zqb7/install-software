@@ -36,6 +36,10 @@ class Robot(object):
         with open("docker-compose.sh","r+") as f:
             self._change_version_tag_github(f,"docker/compose")
 
+    def drawio.sh(self):
+        with open("drawio.sh") as f:
+            self._change_version_tag_github(f,"jgraph/drawio-desktop")
+
     def firefox(self):
         ack = self.req.get("https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-CN", allow_redirects=False)
         if ack.status_code == 302:
