@@ -1,6 +1,7 @@
 code-server.sh
 dbeaver.sh
 docker-compose.sh
+drawio.sh
 filezilla.sh
 firefox.sh
 go.sh
