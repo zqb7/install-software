@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-fileUrl="https://az764295.vo.msecnd.net/stable/3c4e3df9e89829dce27b7b5c24508306b151f30d/code-stable-x64-1618307634.tar.gz"
+fileUrl="https://az764295.vo.msecnd.net/stable/cfa2e218100323074ac1948c885448fdf4de2a7f/code-stable-x64-1620166750.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
 cd /tmp && wget -c $fileUrl -O $fileName && \
