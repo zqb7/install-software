@@ -37,7 +37,7 @@ class Robot(object):
             self._change_version_tag_github(f,"docker/compose")
 
     def drawio(self):
-        with open("drawio.sh") as f:
+        with open("drawio.sh","r+") as f:
             self._change_version_tag_github(f,"jgraph/drawio-desktop")
 
     def firefox(self):
