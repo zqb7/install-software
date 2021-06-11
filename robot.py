@@ -116,7 +116,7 @@ class Robot(object):
                     lines = f.readlines()
                     for index,line  in enumerate(lines):
                         if line.startswith('fileUrl') and real_download_url != line.split('=')[-1].strip('\n').strip('"'):
-                            lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url)
+                            lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url).replace("az764295.vo.msecnd.net/stable","vscode.cdn.azure.cn/stable")
                             f.seek(0)
                             f.truncate()
                             f.writelines(lines)
