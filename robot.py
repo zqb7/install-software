@@ -111,12 +111,13 @@ class Robot(object):
         ack = self.req.get('https://code.visualstudio.com/sha/download?build=stable&os=linux-x64', allow_redirects=False)
         if ack.status_code == 302:
             real_download_url = ack.headers.get('Location')
+            real_download_url = real_download_url.replace("az764295.vo.msecnd.net/stable","vscode.cdn.azure.cn/stable")
             if real_download_url.endswith('.tar.gz'):
                 with open('vscode.sh', 'r+') as f:
                     lines = f.readlines()
                     for index,line  in enumerate(lines):
                         if line.startswith('fileUrl') and real_download_url != line.split('=')[-1].strip('\n').strip('"'):
-                            lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url).replace("az764295.vo.msecnd.net/stable","vscode.cdn.azure.cn/stable")
+                            lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url)
                             f.seek(0)
                             f.truncate()
                             f.writelines(lines)
