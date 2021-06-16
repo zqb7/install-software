@@ -130,7 +130,8 @@ class Robot(object):
         for index,line in enumerate(lines):
             if line.startswith("VERSION"):
                 latest = self._check_for_github_release(name).lstrip('v')
-                if line.split('=')[-1].strip('\n').strip('"') != latest:
+                nowVersion = line.split('=')[-1].strip('\n').strip('"')
+                if nowVersion != latest and latest.split(".")[0] >= nowVersion.split(".")[0]:
                     lines[index] = 'VERSION="{version}"\n'.format(version=latest)
                     f.seek(0)
                     f.truncate()
