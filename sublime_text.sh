@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file_url="https://download.sublimetext.com/sublime_text_build_4107_x64.tar.xz"
+file_url="https://download.sublimetext.com/sublime_text_build_4113_x64.tar.xz"
 file_name=`echo $file_url | awk -F '/' '{print $NF}'`
 
 cd /tmp && wget -c $file_url && \
