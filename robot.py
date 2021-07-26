@@ -122,8 +122,17 @@ class Robot(object):
                             f.truncate()
                             f.writelines(lines)
                             self.changed.setdefault(f.name, real_download_url.split('/')[-2][:5])
-            
-    
+
+    def tigervnc(self):
+        ack = self.req.get("http://tigervnc.bphinz.com/nightly/nightly.html")
+        if ack.status_code == 200:
+            match = re.search(r'>tigervnc-(.*)x86_64.tar.gz', ack.text)
+            if match:
+                fileName = match.group(0).lstrip(">")
+                fileUrl = f'http://tigervnc.bphinz.com/nightly/xc/x86_64/{fileName}'
+                with open("tigervnc.sh", "r+") as f:
+                    self._update_file(f, fileName, fileUrl)
+
     # 只用于修改从github检查版本号的脚本文件
     def _change_version_tag_github(self,f:TextIO,name:str):
         lines = f.readlines()
@@ -144,6 +153,22 @@ class Robot(object):
         ack = self.req.get(url=url)
         if ack.status_code == 200:
             return ack.json()['tag_name']
+
+    def _update_file(self,f: TextIO, fileName, fileUrl):
+        lines = f.readlines()
+        isChanged = False
+        for index, line in enumerate(lines):
+            if line.startswith("fileUrl") and fileUrl != line.split('=')[-1].strip('\n').strip('"'):
+                lines[index] = 'fileUrl="{url}"\n'.format(url=fileUrl)
+                self.changed.setdefault(f.name, fileUrl.split('/')[-2][:5])
+                isChanged = True
+            elif isChanged and line.startswith("fileName") and fileName != line.split('=')[-1].strip('\n').strip('"'):
+                lines[index] = 'fileName="{name}"\n'.format(name=fileName)
+        if isChanged:
+            f.seek(0)
+            f.truncate()
+            f.writelines(lines)
+
 
 if __name__ == "__main__":
     robot = Robot()
