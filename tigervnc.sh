@@ -28,7 +28,9 @@ if [ "$1"  == "auto" ]; then
 auto deploy by systemd
 -----------------------------
 EOF
-exec sudo -i -u ${SUDO_USER} bash -c 'echo "please set vnc passwd";[ -f "~/.vnc/passwd" ] || /opt/tigervnc/usr/bin/vncpasswd'
+[ -f "/home/${SUDO_USER}/.vnc/passwd" ] ||
+  /opt/tigervnc/usr/bin/vncpasswd  /home/${SUDO_USER}/.vnc/passwd && \
+  chown 777 /home/${SUDO_USER}/.vnc/passwd
 cat <<EOF > /lib/systemd/system/tigervnc.service
 [Unit]
 Description=tigerVNC services
