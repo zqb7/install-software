@@ -14,5 +14,5 @@ protoc.sh
 rclone.sh
 sublime_text.sh
 syncthing.sh
-tigetvnc.sh
+tigervnc.sh
 vscode.sh
