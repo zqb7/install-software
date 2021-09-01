@@ -160,7 +160,10 @@ class Robot(object):
         for index, line in enumerate(lines):
             if line.startswith("fileUrl") and fileUrl != line.split('=')[-1].strip('\n').strip('"'):
                 lines[index] = 'fileUrl="{url}"\n'.format(url=fileUrl)
-                self.changed.setdefault(f.name, fileUrl.split('/')[-2][:5])
+                chengedMsg = fileUrl.split('/')[-2][:5]
+                if f.name == "tigervnc.sh":
+                    chengedMsg = ''
+                self.changed.setdefault(f.name, chengedMsg)
                 isChanged = True
             elif isChanged and line.startswith("fileName") and fileName != line.split('=')[-1].strip('\n').strip('"'):
                 lines[index] = 'fileName="{name}"\n'.format(name=fileName)
