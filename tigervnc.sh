@@ -1,7 +1,7 @@
 #!/bin/bash
 
-fileUrl="http://tigervnc.bphinz.com/nightly/xc/x86_64/tigervnc-1.11.80-20210902git4d4e3b28.x86_64.tar.gz"
-fileName="tigervnc-1.11.80-20210902git4d4e3b28.x86_64.tar.gz"
+fileUrl="http://tigervnc.bphinz.com/nightly/xc/x86_64/tigervnc-1.11.80-20210906gitdc6b4ef9.x86_64.tar.gz"
+fileName="tigervnc-1.11.80-20210906gitdc6b4ef9.x86_64.tar.gz"
 
 cd /tmp && \
   wget --max-redirect=2 -c $fileUrl -O $fileName && \
