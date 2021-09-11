@@ -162,7 +162,7 @@ class Robot(object):
                 lines[index] = 'fileUrl="{url}"\n'.format(url=fileUrl)
                 chengedMsg = fileUrl.split('/')[-2][:5]
                 if f.name == "tigervnc.sh":
-                    chengedMsg = ''
+                    chengedMsg = 'latest'
                 self.changed.setdefault(f.name, chengedMsg)
                 isChanged = True
             elif isChanged and line.startswith("fileName") and fileName != line.split('=')[-1].strip('\n').strip('"'):
