@@ -1,7 +1,7 @@
 #!/bin.bash
 
 # see: https://docs.docker.com/compose/install/
-VERSION="2.0.0"
+VERSION="2.0.1"
 if [ -n "$1" ];then VERSION=$1; fi
 
 cd /tmp && wget -c https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-Linux-x86_64 -O docker-compose && \
