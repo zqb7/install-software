@@ -1,5 +1,3 @@
-#!/bin/bash
-
 VERSION="1.17.3"
 
 if [ -n "$1" ];then VERSION=$1;fi
@@ -7,15 +5,22 @@ if [ -n "$1" ];then VERSION=$1;fi
 FILEURL="https://dl.google.com/go/go${VERSION}.linux-amd64.tar.gz"
 FILENAME=go${VERSION}.linux-amd64.tar.gz
 
-cd /tmp && wget -c $FILEURL && \
-    rm -rf /usr/local/go && \
-    tar -C /usr/local -xzf $FILENAME
+SUDO=''
 
-if [ $? -ne 0 ];then echo "install faild";fi
+_init() {
+    which sudo && SUDO="sudo"
+}
 
-cat /etc/bash.bashrc|grep -q ":/usr/local/go/bin" || echo "export PATH=\$PATH:/usr/local/go/bin" >>/etc/bash.bashrc
-/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.cn,direct
-/usr/local/go/bin/go env -w GO111MODULE=on
-su $SUDO_USER -c "/usr/local/go/bin/go env -w  GOPROXY=https://goproxy.cn,direct"
-su $SUDO_USER -c "/usr/local/go/bin/go env -w GO111MODULE=on"
-echo "install go success!"
+_main() {
+    cd /tmp \
+    && wget -c $FILEURL \
+    && ${SUDO} rm -rf /usr/local/go \
+    && ${SUDO} tar -C /usr/local -xzf $FILENAME \
+    && echo "export PATH=\$PATH:/usr/local/go/bin\nGOPROXY=https://goproxy.cn,direct\nGO111MODULE=on" | ${SUDO} tee  /etc/profile.d/go.sh \
+    && echo "install go v${VERSION} success
+You may need run \`source /etc/profile\`
+    "
+}
+
+_init
+_main
