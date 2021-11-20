@@ -133,6 +133,10 @@ class Robot(object):
                 with open("tigervnc.sh", "r+") as f:
                     self._update_file(f, fileName, fileUrl)
 
+    def etcd(self):
+        with open("etcd.sh","r+") as f:
+            self._change_version_tag_github(f,"etcd-io/etcd")
+
     # 只用于修改从github检查版本号的脚本文件
     def _change_version_tag_github(self,f:TextIO,name:str):
         lines = f.readlines()
