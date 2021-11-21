@@ -3,17 +3,13 @@
 fileUrl="https://dl.pstmn.io/download/latest/linux64"
 fileName="postman-latest.tar.gz"
 
-cd /tmp && \
-   wget -c $fileUrl -O $fileName && \
-   tar -zxvf $fileName -C /opt/
+_main() {
+	which sudo >/dev/null && SUDO="sudo"
 
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1
-fi
-
-# 桌面图标
-cat <<EOF >/opt/Postman/postman.svg
+	cd /tmp \
+	&& wget -c $fileUrl -O $fileName \
+	&& ${SUDO} tar -zxvf $fileName -C /opt/ \
+	&& cat <<EOF >postman.svg
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -53,8 +49,8 @@ cat <<EOF >/opt/Postman/postman.svg
 	c0.5,0.4,1.1,0.6,1.8,0.6c0.9,0,1.7-0.4,2.3-1.1C408.3,141.3,409,135,406.4,129.8z"/>
 </svg>
 EOF
-cat <<EOF > /opt/Postman/postman.desktop
-[Desktop Entry]
+	cat postman.svg | ${SUDO} tee /opt/Postman/postman.svg >/dev/null \
+	&& echo """[Desktop Entry]
 Version=1.0
 Type=Application
 Name=Postman
@@ -64,8 +60,10 @@ Comment=a tool for test api;
 Categories=Development;tool;
 Terminal=false
 StartupWMClass=postman
-EOF
-ln -s /opt/Postman/postman.desktop /usr/share/applications/postman.desktop
+""" | ${SUDO} tee /opt/Postman/postman.desktop >/dev/null \
+    && ${SUDO} ln -fs /opt/Postman/postman.desktop /usr/share/applications/postman.desktop \
+	&& ${SUDO} ln -fs /opt/Postman/app/Postman /usr/local/bin/postman \
+	&& echo "install postman latest success"
+}
 
-ln -s /opt/Postman/app/Postman /usr/local/bin/postman
-echo "install postman success!"
+_main

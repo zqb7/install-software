@@ -3,16 +3,20 @@
 fileUrl="https://vscode.cdn.azure.cn/stable/3a6960b964327f0e3882ce18fcebd07ed191b316/code-stable-x64-1636665322.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
-cd /tmp && wget -c $fileUrl -O $fileName && \
-    tar --no-same-owner -zxvf $fileName -C /opt/
+_main() {
+    which sudo >/dev/null && SUDO="sudo"
 
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1 
-fi
+    cd /tmp \
+    && wget -c $fileUrl -O $fileName \
+    && ${SUDO} tar --no-same-owner -zxvf $fileName -C /opt/
 
-# 桌面图标
-cat <<EOF >/opt/VSCode-linux-x64/vscode.svg
+    if [ $? -ne 0 ];then
+        echo "install faild"
+        exit 1
+    fi
+
+    # 桌面图标
+cat <<EOF > vscode.svg
 <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
 <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="256" height="256">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M181.534 254.252C185.566 255.823 190.164 255.722 194.234 253.764L246.94 228.403C252.478 225.738 256 220.132 256 213.983V42.0181C256 35.8689 252.478 30.2638 246.94 27.5988L194.234 2.23681C188.893 -0.333132 182.642 0.296344 177.955 3.70418C177.285 4.191 176.647 4.73454 176.049 5.33354L75.149 97.3862L31.1992 64.0247C27.1079 60.9191 21.3853 61.1735 17.5855 64.63L3.48936 77.4525C-1.15853 81.6805 -1.16386 88.9926 3.47785 93.2274L41.5926 128L3.47785 162.773C-1.16386 167.008 -1.15853 174.32 3.48936 178.548L17.5855 191.37C21.3853 194.827 27.1079 195.081 31.1992 191.976L75.149 158.614L176.049 250.667C177.645 252.264 179.519 253.467 181.534 254.252ZM192.039 69.8853L115.479 128L192.039 186.115V69.8853Z" fill="white"/>
@@ -55,9 +59,8 @@ cat <<EOF >/opt/VSCode-linux-x64/vscode.svg
 </defs>
 </svg>
 EOF
-
-cat <<EOF > /opt/VSCode-linux-x64/vscode.desktop
-[Desktop Entry]
+    cat vscode.svg | ${SUDO} tee /opt/VSCode-linux-x64/vscode.svg >/dev/null \
+    && echo """[Desktop Entry]
 Name=Visual Studio Code
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
@@ -77,10 +80,11 @@ X-Desktop-File-Install-Version=0.24
 Name=New Empty Window
 Exec=/opt/VSCode-linux-x64/code --no-sandbox --new-window %F
 Icon=/opt/VSCode-linux-x64/vscode.svg
-EOF
+""" | ${SUDO} tee /opt/VSCode-linux-x64/vscode.desktop >/dev/null \
+    && ln -fs  /opt/VSCode-linux-x64/vscode.desktop /usr/share/applications/code.desktop \
+    && ln -s /opt/VSCode-linux-x64/code /usr/local/bin/code \
+    && echo "install vscode latest success"
+}
 
-rm -rf /usr/share/applications/code.desktop
 
-ln -s  /opt/VSCode-linux-x64/vscode.desktop /usr/share/applications/code.desktop
-ln -s /opt/VSCode-linux-x64/code /usr/local/bin/code
-echo "install vscode success!"
+_main

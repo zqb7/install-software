@@ -1,24 +1,25 @@
 #!/bin/bash
 
-VERSION="1.18.4"
+VERSION="v1.18.4"
 
 if [ -n "$1" ];then
     VERSION=$1
 fi
 
 
-FILEURL=https://github.com/syncthing/syncthing/releases/download/v${VERSION}/syncthing-linux-amd64-v${VERSION}.tar.gz
-FILENAME=syncthing-linux-amd64-v${VERSION}.tar.gz
+FILEURL=https://github.com/syncthing/syncthing/releases/download/${VERSION}/syncthing-linux-amd64-${VERSION}.tar.gz
+FILENAME=syncthing-linux-amd64-${VERSION}.tar.gz
 
 
-cd /tmp && wget -c $FILEURL && \
-    tar zxvf  ${FILENAME} && \
-    cd ${FILENAME/.tar.gz} && \
-    cp syncthing /usr/local/bin/syncthing
+_main() {
+    which sudo >/dev/null && SUDO="sudo"
 
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1
-else
-    echo "install syncthing  ${VERSION} success"
-fi
+    cd /tmp \
+    && wget -c $FILEURL \
+    && tar zxvf  ${FILENAME} \
+    && cd ${FILENAME/.tar.gz} \
+    && ${SUDO} cp syncthing /usr/local/bin/syncthing \
+    && echo "install syncthing  ${VERSION} success"
+}
+
+_main

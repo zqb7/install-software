@@ -2,17 +2,14 @@
 #
 # 自动安装dbeaver
 #
-cd /tmp && wget --max-redirect=2 -c https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz && \
-    tar -zxvf dbeaver-ce-latest-linux.gtk.x86_64.tar.gz -C /opt && \
-    cd /opt
 
-if [ $? -ne 0 ];then 
-    echo "install dbeaver faild"
-    exit 1
-fi
+_main() {
+    which sudo >/dev/null && SUDO="sudo"
 
-cat <<EOF > /usr/share/applications/dbeaver.desktop
-[Desktop Entry]
+    cd /tmp \
+    && wget --max-redirect=2 -c https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz \
+    && ${SUDO} tar -zxvf dbeaver-ce-latest-linux.gtk.x86_64.tar.gz -C /opt \
+    && echo """[Desktop Entry]
 Version=1.0
 Type=Application
 Terminal=false
@@ -28,6 +25,8 @@ StartupWMClass=DBeaver
 StartupNotify=true
 Keywords=Database;SQL;IDE;JDBC;ODBC;MySQL;PostgreSQL;Oracle;DB2;MariaDB
 MimeType=application/sql
-EOF
+    """ | ${SUDO} tee /usr/share/applications/dbeaver.desktop \
+    && echo "install dbeaver latest success"
+}
 
-echo "install dbeaver success"
+_main

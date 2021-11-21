@@ -1,22 +1,15 @@
 #!/usr/bin/env bash
 
-pushd /tmp >/dev/null
 fileUrl="https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/linux-x86_64/zh-CN/firefox-94.0.1.tar.bz2"
 fileName="Firefox-latest-x86_64.tar.bz2"
 
-wget -c $fileUrl -O $fileName || exit 1
+_main() {
+    which sudo >/dev/null && SUDO="sudo"
 
-tar -jxvf $fileName -C /opt/
-
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1
-fi
-
-popd >/dev/null
-
-cat <<EOF > /opt/firefox/firefox.desktop
-[Desktop Entry]
+    cd /tmp \
+    && wget -c $fileUrl -O $fileName \
+    && ${SUDO} tar -jxvf $fileName -C /opt/ \
+    && echo """[Desktop Entry]
 Version=1.0
 Type=Application
 Name=firefox
@@ -26,8 +19,10 @@ Comment=firefox;
 Categories=Development;tool;
 Terminal=false
 StartupWMClass=firefox
-EOF
-ln -s /opt/firefox/firefox.desktop /usr/share/applications/firefox.desktop
+""" | ${SUDO} tee /opt/firefox/firefox.desktop >/dev/null \
+    && ${SUDO} ln -fs /opt/firefox/firefox.desktop /usr/share/applications/firefox.desktop \
+    && ${SUDO} ln -fs /opt/firefox/firefox /usr/local/bin/firefox \
+    && echo "install firefox latest success"
+}
 
-ln -s /opt/firefox/firefox /usr/local/bin/firefox
-echo "install firefox success!"
+_main

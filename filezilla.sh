@@ -1,26 +1,21 @@
 #!/bin/bash
 
-html=`curl -s https://filezilla-project.org/download.php?platform=linux64`
-fileUrl=`echo $html | grep -o -E  'https://dl[0-9].cdn.filezilla-project.org[^"]*'`
-echo $fileUrl
-if test -z "$fileUrl";then
-    echo "安装失败:获取下载链接失败"
-    exit 1
-else
-    wget  -c $fileUrl -O FileZilla_x86_64-linux-gnu.tar.bz2 && \
-    tar jxvf FileZilla_x86_64-linux-gnu.tar.bz2 -C /opt && \
-    cd /opt && ls -lh | grep -o "FileZilla[0-9]"  && \
-    rm -rf filezilla && \
-    mv `ls -lh | grep -o "FileZilla[0-9]"` filezilla
-fi
 
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1
-fi
-
-cat <<EOF >/usr/share/applications/filezilla.desktop
-[Desktop Entry]
+_main() {
+    html=`curl -s https://filezilla-project.org/download.php?platform=linux64`
+    fileUrl=`echo $html | grep -o -E  'https://dl[0-9].cdn.filezilla-project.org[^"]*'`
+    if test -z "$fileUrl";then
+        echo "安装失败:获取下载链接失败"
+        exit 1
+    fi
+    cd /tmp \
+    && wget  -c $fileUrl -O FileZilla_x86_64-linux-gnu.tar.bz2 \
+    && ${SUDO} tar jxvf FileZilla_x86_64-linux-gnu.tar.bz2 -C /opt \
+    && cd /opt \
+    && ls -lh | grep -o "FileZilla[0-9]" \
+    && ${SUDO} rm -rf filezilla \
+    && mv `ls -lh | grep -o "FileZilla[0-9]"` filezilla \
+    && echo """[Desktop Entry]
 Name=FileZilla
 GenericName=FTP client
 GenericName[da]=FTP-klient
@@ -36,6 +31,8 @@ Icon=/opt/filezilla/share/pixmaps/filezilla.png
 Type=Application
 Categories=Network;FileTransfer;
 Version=1.0
-EOF
+""" | ${SUDO} tee /usr/share/applications/filezilla.desktop >/dev/null \
+    && echo "install filezilla latest success"
+}
 
-echo "install success"
+_main

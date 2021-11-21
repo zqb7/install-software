@@ -1,23 +1,21 @@
 #!/bin/bash
 
-VERSION="0.89.3"
+VERSION="v0.89.3"
 
 if [ -n "$1" ];then
     VERSION=$1
 fi
 
 
-FILEURL=https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_${VERSION}_Linux-64bit.tar.gz
-FILENAME=hugo_${VERSION}_Linux-64bit.tar.gz
+FILEURL=https://github.com/gohugoio/hugo/releases/download/${VERSION}/hugo_${VERSION#v}_Linux-64bit.tar.gz
+FILENAME=hugo_${VERSION#v}_Linux-64bit.tar.gz
 
+_main(){
+    cd /tmp \
+    && wget -c $FILEURL \
+    && tar -zxvf ${FILENAME} \
+    && ${SUDO} cp hugo /usr/local/bin/hugo \
+    && echo "install hugo  ${VERSION} success" 
+}
 
-cd /tmp && wget -c $FILEURL && \
-    tar -zxvf ${FILENAME} && \
-    cp hugo /usr/local/bin/hugo
-    
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1
-else
-    echo "install hugo  ${VERSION} success"
-fi
+_main

@@ -6,12 +6,17 @@ if [ -n "$1" ];then VERSION=$1; fi
 
 FILEURL=https://github.com/jgraph/drawio-desktop/releases/download/v${VERSION}/drawio-x86_64-${VERSION}.AppImage
 
-cd /tmp && wget -c $FILEURL -O drawio.AppImage && \
-    if [ ! -d "/opt/drawio" ];then mkdir -p /opt/drawio;fi && \
-    cp drawio.AppImage /opt/drawio && \
-    cd /opt/drawio && \
-    chmod +x drawio.AppImage && \
-    cat <<EOF > drawio.svg
+_main() {
+    which sudo >/dev/null && SUDO="sudo"
+
+    cd /tmp \
+    && wget -c $FILEURL -O drawio.AppImage \
+    && ${SUDO} mkdir -p /opt/drawio \
+    && ${SUDO} cp drawio.AppImage /opt/drawio \
+    && ${SUDO} chmod +x /opt/drawio/drawio.AppImage
+
+    [ $? -ne 0 ] && return
+    cat << EOF > /opt/drawio/drawio.svg
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -35,9 +40,7 @@ cd /tmp && wget -c $FILEURL -O drawio.AppImage && \
 </g>
 </svg>
 EOF
-
-cat <<EOF > /usr/share/applications/drawio.desktop
-[Desktop Entry]
+    echo """[Desktop Entry]
 Name=drawio
 Exec=/opt/drawio/drawio.AppImage
 Terminal=false
@@ -48,10 +51,8 @@ X-AppImage-Version=${VERSION}
 Comment=diagrams.net desktop
 MimeType=application/vnd.jgraph.mxfile;application/vnd.visio;
 Categories=Graphics;
-EOF
-if [ $? -ne 0 ];then 
-    echo "install faild"
-    exit 1
-else
-    echo "install drawio  ${VERSION} success"
-fi
+""" | ${SUDO} tee  /usr/share/applications/drawio.desktop >/dev/null \
+    && echo "install drawio ${VERSION} success"
+}
+
+_main

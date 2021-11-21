@@ -1,10 +1,10 @@
 #!/bin/bash
-VERSION="3.12.0"
+VERSION="v3.12.0"
 
 if [ -n "$1" ];then VERSION=$1; fi
 
-FILEURL="https://github.com/cdr/code-server/releases/download/v${VERSION}/code-server-${VERSION}-linux-amd64.tar.gz"
-FILENAME=code-server-${VERSION}-linux-amd64.tar.gz
+FILEURL="https://github.com/cdr/code-server/releases/download/${VERSION}/code-server-${VERSION#v}-linux-amd64.tar.gz"
+FILENAME=code-server-${VERSION#v}-linux-amd64.tar.gz
 
 _main() {
   which sudo >/dev/null && SUDO="sudo"
