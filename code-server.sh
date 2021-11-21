@@ -19,8 +19,8 @@ _main() {
   && echo """#!/bin/bash
 #!/usr/bin/env sh
 exec /opt/code-server/bin/code-server "$@"
-  """ | ${SUDO} tee /usr/bin/code-server >/dev/null \
-  && ${SUDO} chmod +x /usr/bin/code-server \
+  """ | ${SUDO} tee /usr/local/bin/code-server >/dev/null \
+  && ${SUDO} chmod +x /usr/local/bin/code-server \
   && ${SUDO} rm /opt/code-server/src/browser/media/favicon.ico
   [ $? -ne 0 ] && return
   cat << EOF > /tmp/code-server_favicon.svg
