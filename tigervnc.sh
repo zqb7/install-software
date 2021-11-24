@@ -47,9 +47,9 @@ ExecStart=/opt/tigervnc/usr/bin/x0vncserver SecurityTypes=VncAuth PasswordFile=$
 [Install]
 WantedBy=default.target
 """ | ${SUDO} tee /lib/systemd/system/tigervnc.service >/dev/null \
-      && systemctl daemon-reload \
-      && systemctl enable tigervnc \
-      && systemctl status tigervnc
+      && ${SUDO} systemctl daemon-reload \
+      && ${SUDO} systemctl enable tigervnc \
+      && ${SUDO} systemctl status tigervnc
   fi
 }
 _main $@
