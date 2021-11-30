@@ -13,6 +13,8 @@ FILEURL="https://nodejs.org/dist/${VERSION}/node-${VERSION}-linux-x64.tar.xz"
 FILENAME=node-${VERSION}-linux-x64.tar.xz
 
 _main() {
+    which sudo >/dev/null && SUDO="sudo"
+
     cd /tmp \
     && wget -c $FILEURL \
     && ${SUDO} tar --no-same-owner -xvf $FILENAME -C /opt/ \
