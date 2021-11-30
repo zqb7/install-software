@@ -15,7 +15,7 @@ FILENAME=node-${VERSION}-linux-x64.tar.xz
 _main() {
     cd /tmp \
     && wget -c $FILEURL \
-    && tar --no-same-owner -xvf $FILENAME -C /opt/ \
+    && ${SUDO} tar --no-same-owner -xvf $FILENAME -C /opt/ \
     && ${SUDO} rm -rf /opt/node \
     && ${SUDO} mv /opt/${FILENAME/.tar.xz} /opt/node \
     && ${SUDO} ln -fs /opt/node/bin/node /usr/local/bin/node \
