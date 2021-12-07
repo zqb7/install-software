@@ -14,6 +14,7 @@ ohmyzsh.sh
 postman.sh
 protoc.sh
 rclone.sh
+redis.sh
 sublime_text.sh
 syncthing.sh
 tigervnc.sh
