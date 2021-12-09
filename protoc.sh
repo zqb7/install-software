@@ -7,7 +7,7 @@ if [ -n "$1" ];then
 fi
 
 FILENAME=protobuf-all-${VERSION#v}.tar.gz
-FILEURL=https://github.com/protocolbuffers/protobuf/releases/download/${VERSION}/${FILENAME}
+FILEURL=https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION#v}/${FILENAME#v}
 
 _main() {
     which sudo >/dev/null && SUDO="sudo"
