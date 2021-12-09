@@ -19,7 +19,7 @@ _main() {
     && wget -c $FILEURL \
     && ${SUDO} tar --no-same-owner -xvf $FILENAME -C /opt/ \
     && ${SUDO} rm -rf /opt/node \
-    && ${SUDO} mv /opt/${FILENAME/.tar.xz} /opt/node \
+    && ${SUDO} mv /opt/${FILENAME%.tar.xz} /opt/node \
     && ${SUDO} ln -fs /opt/node/bin/node /usr/local/bin/node \
     && ${SUDO} ln -fs /opt/node/bin/npm /usr/local/bin/npm \
     && ${SUDO} ln -fs /opt/node/bin/npx /usr/bin/npx \

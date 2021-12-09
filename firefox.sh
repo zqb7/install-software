@@ -25,4 +25,4 @@ StartupWMClass=firefox
     && echo "install firefox latest success"
 }
 
-_main
+_main $@
