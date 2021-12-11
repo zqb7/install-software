@@ -13,7 +13,7 @@ _main() {
     which sudo >/dev/null && SUDO="sudo"
 
     cd /tmp \
-    && curl -O -C - ${FILEURL} \
+    && curl -OL -C - ${FILEURL} \
     && tar zxvf  ${FILENAME} \
     && cd protobuf-${VERSION#v} \
     && ${SUDO} ./configure \
