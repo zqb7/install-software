@@ -17,7 +17,7 @@ _init() {
 
 _main() {
     cd /tmp \
-    && wget -c ${DOWNLOAD_URL}/v${VERSION#v}/etcd-v${VERSION#v}-linux-amd64.tar.gz \
+    && curl -O -C - ${DOWNLOAD_URL}/v${VERSION#v}/etcd-v${VERSION#v}-linux-amd64.tar.gz \
     && ${SUDO} rm -rf /opt/etcd \
     && ${SUDO} mkdir -p /opt/etcd \
     && ${SUDO} tar xzvf etcd-v${VERSION#v}-linux-amd64.tar.gz -C /opt/etcd --strip-components=1 \
