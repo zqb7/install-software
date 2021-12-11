@@ -13,7 +13,7 @@ _init() {
 
 _main() {
     cd /tmp \
-    && wget -c $FILEURL \
+    && curl -O -C - $FILEURL \
     && ${SUDO} rm -rf /usr/local/go \
     && ${SUDO} tar -C /usr/local -xzf $FILENAME \
     && echo "export PATH=\$PATH:/usr/local/go/bin\nGOPROXY=https://goproxy.cn,direct\nGO111MODULE=on" | ${SUDO} tee  /etc/profile.d/go.sh \
