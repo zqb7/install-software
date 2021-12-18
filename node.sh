@@ -2,7 +2,7 @@
 
 # auto install nodejs
 
-VERSION="v12.22.8"
+VERSION="v17.3.0"
 
 if [ -n "$1" ];then
     VERSION=$1
