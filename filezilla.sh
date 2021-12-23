@@ -2,6 +2,8 @@
 
 
 _main() {
+    which sudo >/dev/null && SUDO="sudo"
+    
     html=`curl -s https://filezilla-project.org/download.php?platform=linux64`
     fileUrl=`echo $html | grep -o -E  'https://dl[0-9].cdn.filezilla-project.org[^"]*'`
     if test -z "$fileUrl";then
