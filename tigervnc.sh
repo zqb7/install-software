@@ -1,7 +1,7 @@
 #!/bin/bash
 
-fileUrl="http://tigervnc.bphinz.com/nightly/xc/x86_64/tigervnc-1.12.80-20211227git345fdb21.x86_64.tar.gz"
-fileName="tigervnc-1.12.80-20211227git345fdb21.x86_64.tar.gz"
+fileUrl="http://tigervnc.bphinz.com/nightly/xc/x86_64/tigervnc-1.12.80-20211230git805252ed.x86_64.tar.gz"
+fileName="tigervnc-1.12.80-20211230git805252ed.x86_64.tar.gz"
 
 export HOME=${HOME}
 
