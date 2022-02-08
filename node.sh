@@ -9,8 +9,8 @@ if [ -n "$1" ];then
 fi
 
 
-FILEURL="https://nodejs.org/dist/${VERSION}/node-${VERSION}-linux-x64.tar.xz"
-FILENAME=node-${VERSION}-linux-x64.tar.xz
+FILEURL="https://nodejs.org/dist/v${VERSION#v}/node-v${VERSION#v}-linux-x64.tar.xz"
+FILENAME=node-v${VERSION#v}-linux-x64.tar.xz
 
 _main() {
     which sudo >/dev/null && SUDO="sudo"
@@ -23,7 +23,7 @@ _main() {
     && ${SUDO} ln -fs /opt/node/bin/node /usr/local/bin/node \
     && ${SUDO} ln -fs /opt/node/bin/npm /usr/local/bin/npm \
     && ${SUDO} ln -fs /opt/node/bin/npx /usr/bin/npx \
-    && echo "install nodejs ${VERSION} success" 
+    && echo "install nodejs v${VERSION#v} success" 
 }
 
 _main
