@@ -4,7 +4,7 @@ One-click installation of common software
 
 
 ### 本脚本已绑定在域名: zqhhh.tk
-> This script is bound to the domain name: sh.sadeye.cn
+> This script is bound to the domain name: zqhhh.tk
 
 ### Usage
 > example: `sh -c "$(curl -fsSL zqhhh.tk/example.sh)"` or `sh -c "$(curl -fsSL zqhhh.tk/example.sh)" -s arg1 arg2`
