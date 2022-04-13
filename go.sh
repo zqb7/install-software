@@ -1,4 +1,4 @@
-VERSION="1.18"
+VERSION="1.18.1"
 
 if [ -n "$1" ];then VERSION=$1;fi
 
