@@ -23,7 +23,10 @@ _main() {
     && ${SUDO} ln -fs /opt/node/bin/node /usr/local/bin/node \
     && ${SUDO} ln -fs /opt/node/bin/npm /usr/local/bin/npm \
     && ${SUDO} ln -fs /opt/node/bin/npx /usr/bin/npx \
-    && echo "install nodejs v${VERSION#v} success" 
+    && echo "export PATH=\$PATH:/opt/node/bin" | ${SUDO} tee  /etc/profile.d/node.sh \
+    && echo "install nodejs v${VERSION#v} success
+You may need run \`source /etc/profile\`
+    "
 }
 
 _main
