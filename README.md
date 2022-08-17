@@ -35,6 +35,7 @@ One-click installation of common software
     - redis.sh
     - syncthing.sh
     - tigervnc.sh
+    - upx.sh
 
 ### HELP
 你可以使用以下命令查看有哪些脚本  
