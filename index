@@ -18,4 +18,5 @@ redis.sh
 sublime_text.sh
 syncthing.sh
 tigervnc.sh
+upx.sh
 vscode.sh
