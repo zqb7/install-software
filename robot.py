@@ -50,12 +50,19 @@ class Robot(object):
                 with open("firefox.sh", "r+") as f:
                     lines = f.readlines()
                     for index,line in enumerate(lines):
-                        if line.startswith("fileUrl") and real_download_url != line.split('=')[-1].strip('\n').strip('"'):
+                        if line.startswith("fileUrl") is False:
+                            continue
+                        curVersion = re.search(r'.*firefox-(.*)\.tar.*',line.split('=')[-1].strip('\n').strip('"')).group(1)
+                        if real_download_url != line.split('=')[-1].strip('\n').strip('"'):
                             lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url)
                             f.seek(0)
                             f.truncate()
                             f.writelines(lines)
                             self.changed.setdefault(f.name, version)
+                            print(f"更新成功:firefox {curVersion} --> {version}")
+                            break
+                        else:
+                            print(f"更新忽略:firefox 当前版本:{curVersion} --> 远程版本:{version}")
                             break
 
     def go(self):
@@ -67,12 +74,19 @@ class Robot(object):
                 with open("go.sh", "r+") as f:
                     lines = f.readlines()
                     for index,line in enumerate(lines):
-                        if line.startswith("VERSION") and line.split('=')[-1].strip('\n').strip('"') != version:
+                        if line.startswith("VERSION") is False:
+                            continue
+                        curVersion = line.split('=')[-1].strip('\n').strip('"')
+                        if  curVersion != version:
                             lines[index] = 'VERSION="{version}"\n'.format(version=version)
                             f.seek(0)
                             f.truncate()
                             f.writelines(lines)
                             self.changed.setdefault(f.name, version)
+                            print(f"更新成功:go {curVersion} --> {version}")
+                            break
+                        else:
+                            print(f"更新忽略:go 当前版本:{curVersion} --> 远程版本:{version}")
                             break
 
     def hugo(self):
@@ -116,12 +130,18 @@ class Robot(object):
                 with open('vscode.sh', 'r+') as f:
                     lines = f.readlines()
                     for index,line  in enumerate(lines):
-                        if line.startswith('fileUrl') and real_download_url != line.split('=')[-1].strip('\n').strip('"'):
+                        if line.startswith('fileUrl') is False:
+                            continue
+                        if real_download_url != line.split('=')[-1].strip('\n').strip('"'):
                             lines[index] = 'fileUrl="{url}"\n'.format(url=real_download_url)
                             f.seek(0)
                             f.truncate()
                             f.writelines(lines)
+                            print(f"更新成功:vscode {line.split('/')[-2]} --> {real_download_url.split('/')[-2]}")
                             self.changed.setdefault(f.name, real_download_url.split('/')[-2][:5])
+                        else:
+                            print(f"更新忽略:vscode 当前版本:{line.split('/')[-2]} --> 远程版本:{real_download_url.split('/')[-2]}")
+                            break
 
     def tigervnc(self):
         ack = self.req.get("http://tigervnc.bphinz.com/nightly/nightly.html")
