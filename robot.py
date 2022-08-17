@@ -137,14 +137,22 @@ class Robot(object):
         with open("etcd.sh","r+") as f:
             self._change_version_tag_github(f,"etcd-io/etcd")
 
+    def upx(self):
+        with open("upx.sh","r+") as f:
+            self._change_version_tag_github(f,"upx/upx")
+
     # 只用于修改从github检查版本号的脚本文件
     def _change_version_tag_github(self,f:TextIO,name:str):
         lines = f.readlines()
         for index,line in enumerate(lines):
             if line.startswith("VERSION"):
-                latest = self._check_for_github_release(name)
+                latest, success = self._check_for_github_release(name)
+                if success is False:
+                    print(f"更新失败:{name} {latest}")
+                    break
                 nowVersion = line.split('=')[-1].strip('\n').strip('"')
                 if nowVersion.startswith("v") and latest.startswith("v") and latest.split(".")[1] < nowVersion.split(".")[1]:
+                    print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
                     break
                 if nowVersion != latest:
                     lines[index] = 'VERSION="{version}"\n'.format(version=latest)
@@ -152,13 +160,18 @@ class Robot(object):
                     f.truncate()
                     f.writelines(lines)
                     self.changed.setdefault(f.name, latest)
+                    print(f"更新成功:{name} {nowVersion} --> {latest}")
                     break
-    
-    def _check_for_github_release(self,name:str) ->str:
+                else:
+                    print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
+
+    def _check_for_github_release(self,name:str) ->tuple[str, bool]:
         url = 'https://api.github.com/repos/{name}/releases/latest'.format(name=name)
         ack = self.req.get(url=url)
         if ack.status_code == 200:
-            return ack.json()['tag_name']
+            return ack.json()['tag_name'],True
+        else:
+            return f"code:{ack.status_code}, err:{ack.reason}",False
 
     def _update_file(self,f: TextIO, fileName, fileUrl):
         lines = f.readlines()

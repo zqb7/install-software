@@ -10,3 +10,6 @@ class TestRobot(TestCase):
 
     def test_etcd(self):
         self.robot.etcd()
+
+    def test_upx(self):
+        self.robot.upx()
