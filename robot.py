@@ -171,7 +171,7 @@ class Robot(object):
                     print(f"更新失败:{name} {latest}")
                     break
                 nowVersion = line.split('=')[-1].strip('\n').strip('"')
-                if nowVersion.startswith("v") and latest.startswith("v") and latest.split(".")[1] < nowVersion.split(".")[1]:
+                if latest.lstrip("v").split(".")[0] < nowVersion.lstrip("v").split(".")[0]:
                     print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
                     break
                 if nowVersion != latest:
