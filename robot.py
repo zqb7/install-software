@@ -1,6 +1,6 @@
 import requests
 import re
-from typing import TextIO
+from typing import TextIO,Tuple
 from git import Repo
 
 class Robot(object):
@@ -201,7 +201,7 @@ class Robot(object):
                 else:
                     print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
 
-    def _check_for_github_release(self,name:str) ->tuple[str, bool]:
+    def _check_for_github_release(self,name:str) ->Tuple[str, bool]:
         url = 'https://api.github.com/repos/{name}/releases/latest'.format(name=name)
         ack = self.req.get(url=url)
         if ack.status_code == 200:
