@@ -171,9 +171,25 @@ class Robot(object):
                     print(f"更新失败:{name} {latest}")
                     break
                 nowVersion = line.split('=')[-1].strip('\n').strip('"')
-                if latest.lstrip("v").split(".")[0] < nowVersion.lstrip("v").split(".")[0]:
-                    print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
-                    break
+                latestVersionNumArr = latest.lstrip("v").split(".")
+                nowVersionNumArr = nowVersion.lstrip("v").split(".")
+                if len(nowVersionNumArr) > len(latestVersionNumArr):
+                    latestVersionNumArr.extend([0 for _ in range(len(nowVersionNumArr)-len(latestVersionNumArr))])
+                    pass
+                elif len(nowVersionNumArr) < len(latestVersionNumArr):
+                    nowVersionNumArr.extend([0 for _ in range(len(latestVersionNumArr)-len(nowVersionNumArr))])
+                
+                for index,v in enumerate(latestVersionNumArr):
+                    flag = False
+                    v2 = int(nowVersionNumArr[index])
+                    if int(v) > v2:
+                        break
+                    elif int(v) < int(nowVersionNumArr[index]):
+                        print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
+                        flag = True
+                        break
+                    if flag:
+                        break
                 if nowVersion != latest:
                     lines[index] = 'VERSION="{version}"\n'.format(version=latest)
                     f.seek(0)
