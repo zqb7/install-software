@@ -1,4 +1,4 @@
-#!/bin/bash
+VERSION="v16.17.0"
 
 # auto install nodejs
 
