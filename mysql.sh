@@ -1,3 +1,5 @@
+#!/bin/bash
+
 which sudo >/dev/null && SUDO="sudo"
 
 _clear() {

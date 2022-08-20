@@ -2,7 +2,7 @@
 
 _main() {
     which sudo >/dev/null && SUDO="sudo"
-    which zsh > /dev/null || ${SUDO} apt-get install -y zsh
+    which zsh > /dev/null || (echo "please install zsh" && exit 1)
 
     if [ -d ~/.oh-my-zsh ];then
         echo "has been installed"

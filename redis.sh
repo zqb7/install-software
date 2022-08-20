@@ -1,3 +1,4 @@
+#!/bin/bash
 
 _main() {
     which sudo >/dev/null && SUDO="sudo"

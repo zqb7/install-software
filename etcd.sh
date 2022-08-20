@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-VERSION="v3.4.20"
 VERSION="v3.5.4"
 
 if [ -n "$1" ];then
