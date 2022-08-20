@@ -1,7 +1,7 @@
 #!/bin/bash
-VERSION="v2.10.0"
+
 # see: https://docs.docker.com/compose/install/
-VERSION="v2.9.0"
+VERSION="v2.10.0"
 if [ -n "$1" ];then VERSION=$1; fi
 
 _main() {

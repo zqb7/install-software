@@ -175,16 +175,15 @@ class Robot(object):
                 nowVersionNumArr = nowVersion.lstrip("v").split(".")
                 if len(nowVersionNumArr) > len(latestVersionNumArr):
                     latestVersionNumArr.extend([0 for _ in range(len(nowVersionNumArr)-len(latestVersionNumArr))])
-                    pass
                 elif len(nowVersionNumArr) < len(latestVersionNumArr):
                     nowVersionNumArr.extend([0 for _ in range(len(latestVersionNumArr)-len(nowVersionNumArr))])
                 
-                for index,v in enumerate(latestVersionNumArr):
+                for index2,v in enumerate(latestVersionNumArr):
                     flag = False
-                    v2 = int(nowVersionNumArr[index])
+                    v2 = int(nowVersionNumArr[index2])
                     if int(v) > v2:
                         break
-                    elif int(v) < int(nowVersionNumArr[index]):
+                    elif int(v) < int(nowVersionNumArr[index2]):
                         print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
                         flag = True
                         break
