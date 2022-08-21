@@ -171,24 +171,9 @@ class Robot(object):
                     print(f"更新失败:{name} {latest}")
                     break
                 nowVersion = line.split('=')[-1].strip('\n').strip('"')
-                latestVersionNumArr = latest.lstrip("v").split(".")
-                nowVersionNumArr = nowVersion.lstrip("v").split(".")
-                if len(nowVersionNumArr) > len(latestVersionNumArr):
-                    latestVersionNumArr.extend([0 for _ in range(len(nowVersionNumArr)-len(latestVersionNumArr))])
-                elif len(nowVersionNumArr) < len(latestVersionNumArr):
-                    nowVersionNumArr.extend([0 for _ in range(len(latestVersionNumArr)-len(nowVersionNumArr))])
-                
-                for index2,v in enumerate(latestVersionNumArr):
-                    flag = False
-                    v2 = int(nowVersionNumArr[index2])
-                    if int(v) > v2:
-                        break
-                    elif int(v) < int(nowVersionNumArr[index2]):
-                        print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
-                        flag = True
-                        break
-                    if flag:
-                        break
+                if self._compare_verion(nowVersion,latest) is False:
+                    print(f"更新忽略:{name} 当前版本:{nowVersion} 远程版本:{latest}")
+                    break
                 if nowVersion != latest:
                     lines[index] = 'VERSION="{version}"\n'.format(version=latest)
                     f.seek(0)
@@ -225,6 +210,24 @@ class Robot(object):
             f.seek(0)
             f.truncate()
             f.writelines(lines)
+    
+    # 比较版本号 latestV是否大于nowV
+    def _compare_verion(self,nowV:str, latestV:str) ->bool:
+        nowVersionNumArr = nowV.lstrip("v").split(".")
+        latestVersionNumArr = latestV.lstrip("v").split(".")
+        
+        if len(nowVersionNumArr) > len(latestVersionNumArr):
+            latestVersionNumArr.extend([0 for _ in range(len(nowVersionNumArr)-len(latestVersionNumArr))])
+        elif len(nowVersionNumArr) < len(latestVersionNumArr):
+            nowVersionNumArr.extend([0 for _ in range(len(latestVersionNumArr)-len(nowVersionNumArr))])
+
+        for index2,v in enumerate(latestVersionNumArr):
+            v2 = int(nowVersionNumArr[index2])
+            if int(v) > v2:
+                return True
+            elif int(v) < int(nowVersionNumArr[index2]):
+                return False
+        return False
 
 
 if __name__ == "__main__":

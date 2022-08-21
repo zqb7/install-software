@@ -61,3 +61,11 @@ class TestRobot(TestCase):
 
     def test_upx(self):
         self.robot.upx()
+    
+    def test_compare_verion(self):
+        self.assertTrue(self.robot._compare_verion("v1.2.3","v1.3"))
+        self.assertTrue(self.robot._compare_verion("v1.3.3","v1.3.4"))
+        self.assertTrue(self.robot._compare_verion("v1.3","v1.3.4"))
+        self.assertFalse(self.robot._compare_verion("v3.5.4","v3.4.20"))
+        self.assertFalse(self.robot._compare_verion("v17.9.1","v16.17.0"))
+        self.assertFalse(self.robot._compare_verion("v1.2.3","v1.2.2.1"))
