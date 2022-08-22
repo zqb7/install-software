@@ -8,6 +8,7 @@ firefox.sh
 go.sh
 hugo.sh
 java.sh
+lua.sh
 mysql.sh
 node.sh
 ohmyzsh.sh
