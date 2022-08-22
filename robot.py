@@ -161,6 +161,10 @@ class Robot(object):
         with open("upx.sh","r+") as f:
             self._change_version_tag_github(f,"upx/upx")
 
+    def lua(self):
+        with open("lua.sh","r+") as f:
+            self._change_version_tag_github(f,"lua/lua")
+
     # 只用于修改从github检查版本号的脚本文件
     def _change_version_tag_github(self,f:TextIO,name:str):
         lines = f.readlines()
