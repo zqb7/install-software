@@ -14,6 +14,7 @@ _main(){
     cd /tmp \
     && wget -c $FILEURL \
     && tar -zxvf ${FILENAME} \
+    && cd lua-${VERSION#v} \
     && ${SUDO} make linux \
     && ${SUDO} make install \
     && ${SUDO} echo "install lua  ${VERSION} success" 
