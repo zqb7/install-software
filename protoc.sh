@@ -12,6 +12,14 @@ FILEURL=https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION
 _main() {
     which sudo >/dev/null && SUDO="sudo"
 
+    http_code=`curl -s -o /dev/null -I -w "%{http_code}" ${FILEURL}`
+    if [ $http_code -eq 404 ];then
+        FILENAME=protobuf-${VERSION#v}.tar.gz
+        FILEURL=https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION#v}/${FILENAME#v}
+    elif [ $http_code -ne 200 ] && [ $http_code -ne 301 ] && [ $http_code -ne 302 ];then
+        echo "http ${http_code}"
+        exit 1
+    fi
     cd /tmp \
     && curl -OL -C - ${FILEURL} \
     && tar zxvf  ${FILENAME} \
