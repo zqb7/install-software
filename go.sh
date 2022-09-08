@@ -16,7 +16,7 @@ _main() {
     && curl -O -C - $FILEURL \
     && ${SUDO} rm -rf /usr/local/go \
     && ${SUDO} tar -C /usr/local -xzf $FILENAME \
-    && echo "export PATH=\$PATH:/usr/local/go/bin\nGOPROXY=https://goproxy.cn,direct\nGO111MODULE=on" | ${SUDO} tee  /etc/profile.d/go.sh \
+    && echo "export PATH=\$PATH:/usr/local/go/bin\nexport GOPROXY=https://goproxy.cn,direct\nexport GO111MODULE=on" | ${SUDO} tee  /etc/profile.d/go.sh \
     && echo "install go v${VERSION} success
 You may need run \`source /etc/profile\`
     "
