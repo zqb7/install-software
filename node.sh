@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # auto install nodejs
-VERSION="v18.8.0"
+VERSION="v18.9.0"
 
 if [ -n "$1" ];then
     VERSION=$1
