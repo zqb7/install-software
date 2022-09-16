@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-fileUrl="https://vscode.cdn.azure.cn/stable/e7f30e38c5a4efafeec8ad52861eb772a9ee4dfb/code-stable-x64-1662667537.tar.gz"
+fileUrl="https://vscode.cdn.azure.cn/stable/74b1f979648cc44d385a2286793c226e611f59e7/code-stable-x64-1663191492.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
 _main() {
