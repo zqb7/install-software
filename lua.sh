@@ -6,6 +6,11 @@ if [ -n "$1" ];then
     VERSION=$1
 fi
 
+SUDO=''
+
+_init() {
+    which sudo && SUDO="sudo"
+}
 
 FILEURL=http://www.lua.org/ftp/lua-${VERSION#v}.tar.gz
 FILENAME=lua-${VERSION#v}.tar.gz
@@ -20,4 +25,5 @@ _main(){
     && ${SUDO} echo "install lua  ${VERSION} success" 
 }
 
+_init
 _main
