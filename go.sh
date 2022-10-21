@@ -21,10 +21,10 @@ _main() {
     && echo "install go v${VERSION} success"
 
     if [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
-        echo ${GOVAR} | tee -a ~/.bashrc
+        echo -e ${GOVAR} | tee -a ~/.bashrc
         echo "You may need run \`source ~/.bashrc\`"
     elif [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
-        echo ${GOVAR} | tee -a ~/.zshrc 
+        echo -e ${GOVAR} | tee -a ~/.zshrc 
         echo "You may need run \`source ~/.zshrc\`"
     else
         echo -e "You may add manually \n${GOVAR}"
