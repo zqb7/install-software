@@ -3,13 +3,13 @@ One-click installation of common software
 
 
 
-### 本脚本已绑定在域名: zqhhh.tk
-> This script is bound to the domain name: zqhhh.tk
+### 本脚本已绑定在域名: install.sadeye.cn
+> This script is bound to the domain name: install.sadeye.cn
 
 ### Usage
-> example: `sh -c "$(curl -fsSL zqhhh.tk/example.sh)"` or `sh -c "$(curl -fsSL zqhhh.tk/example.sh)" -s arg1 arg2`
-- `sh -c "$(curl -fsSL zqhhh.tk/go.sh)" -s 1.15.6`
-- `sh -c "$(curl -fsSL zqhhh.tk/vscode.sh)"`
+> example: `sh -c "$(curl -fsSL install.sadeye.cn/example.sh)"` or `sh -c "$(curl -fsSL install.sadeye.cn/example.sh)" -s arg1 arg2`
+- `sh -c "$(curl -fsSL install.sadeye.cn/go.sh)" -s 1.15.6`
+- `sh -c "$(curl -fsSL install.sadeye.cn/vscode.sh)"`
 
 ### 分类(Category)
 + 桌面应用(Desktop Application)
@@ -40,4 +40,4 @@ One-click installation of common software
 ### HELP
 你可以使用以下命令查看有哪些脚本  
 You can use the following command to see which scripts are there  
-`curl -sSL zqhhh.tk/index`
+`curl -sSL install.sadeye.cn/index`
