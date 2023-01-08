@@ -1,0 +1,19 @@
+name: sync-to-cos
+on:
+  push:
+    branches: [ main ]
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 把将要上传的文件COPY一份到upload目录下
+        run : mkdir upload && cp *.sh upload && cp index upload
+      - uses: TencentCloud/cos-action@v1
+        with:
+          secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+          secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+          cos_bucket: ${{ secrets.COS_BUCKET }}
+          cos_region: ${{ secrets.COS_REGION }}
+          local_path: upload/
+          remote_path: .
+          clean: true
