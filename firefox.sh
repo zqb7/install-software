@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-fileUrl="https://download-installer.cdn.mozilla.net/pub/firefox/releases/108.0.2/linux-x86_64/zh-CN/firefox-108.0.2.tar.bz2"
+fileUrl="https://download-installer.cdn.mozilla.net/pub/firefox/releases/109.0/linux-x86_64/zh-CN/firefox-109.0.tar.bz2"
 fileName="Firefox-latest-x86_64.tar.bz2"
 
 _main() {
