@@ -5,6 +5,7 @@ drawio.sh
 etcd.sh
 filezilla.sh
 firefox.sh
+gh.sh
 go.sh
 hugo.sh
 java.sh
