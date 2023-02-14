@@ -65,6 +65,10 @@ class Robot(object):
                             print(f"更新忽略:firefox 当前版本:{curVersion} --> 远程版本:{version}")
                             break
 
+    def gh(self):
+        with open("gh.sh","r+") as f:
+            self._change_version_tag_github(f,"cli/cli")
+
     def go(self):
         ack = self.req.get('https://golang.org/dl/')
         if ack.status_code == 200:
