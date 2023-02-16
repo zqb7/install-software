@@ -24,6 +24,7 @@ One-click installation of common software
     - code-server.sh
     - docker-compose.sh
     - etcd.sh
+    - gh.sh
     - go.sh
     - hugo.sh
     - java.sh
