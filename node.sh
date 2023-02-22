@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # auto install nodejs
-VERSION="v19.6.1"
+VERSION="v19.7.0"
 
 if [ -n "$1" ];then
     VERSION=$1
