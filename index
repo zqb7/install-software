@@ -1,24 +1,24 @@
-code-server.sh
-dbeaver.sh
-docker-compose.sh
-drawio.sh
-etcd.sh
-filezilla.sh
-firefox.sh
-gh.sh
-go.sh
-hugo.sh
-java.sh
-lua.sh
-mysql.sh
-node.sh
-ohmyzsh.sh
-postman.sh
-protoc.sh
-rclone.sh
-redis.sh
-sublime_text.sh
-syncthing.sh
-tigervnc.sh
-upx.sh
-vscode.sh
+sh -c "$(curl -fsSL install.sadeye.cn/code-server.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/dbeaver.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/docker-compose.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/drawio.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/etcd.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/filezilla.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/firefox.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/gh.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/go.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/hugo.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/java.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/lua.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/mysql.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/node.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/ohmyzsh.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/postman.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/protoc.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/rclone.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/redis.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/sublime_text.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/syncthing.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/tigervnc.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/upx.sh)"
+sh -c "$(curl -fsSL install.sadeye.cn/vscode.sh)"
