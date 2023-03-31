@@ -24,7 +24,7 @@ jobs:
       - name: generate 'index' file
         run: |
           cat << EOF > index
-          $(ls -lh|grep "\.sh"|awk '{print $NF}')
+          $(ls -lh|grep "\.sh"|awk '{print "sh -c \"$(curl -fsSL install.sadeye.cn/"  $NF ")\""}')
           EOF
       - name: commit
         run: |
