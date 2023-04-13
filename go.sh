@@ -16,8 +16,8 @@ _main() {
     && curl -O -C - $FILEURL \
     && ${SUDO} rm -rf /usr/local/go \
     && ${SUDO} tar -C /usr/local -xzf $FILENAME \
-    && ln -sf /usr/local/go/bin/go /usr/local/bin/go \
-    && ln -sf /usr/local/go/bin/gofmt /usr/local/bin/gofmt \
+    && ${SUDO} ln -sf /usr/local/go/bin/go /usr/local/bin/go \
+    && ${SUDO} ln -sf /usr/local/go/bin/gofmt /usr/local/bin/gofmt \
     && echo "install go v${VERSION} success"
 }
 
