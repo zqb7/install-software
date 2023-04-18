@@ -21,7 +21,7 @@ _main() {
         exit 1
     fi
     cd /tmp \
-    && curl -OL -C - ${FILEURL} \
+    && wget -c ${FILEURL} \
     && tar zxvf  ${FILENAME} \
     && cd protobuf-${VERSION#v} \
     && ${SUDO} ./configure \

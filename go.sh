@@ -13,7 +13,7 @@ _init() {
 
 _main() {
     cd /tmp \
-    && curl -O -C - $FILEURL \
+    && wget -c $FILEURL \
     && ${SUDO} rm -rf /usr/local/go \
     && ${SUDO} tar -C /usr/local -xzf $FILENAME \
     && ${SUDO} ln -sf /usr/local/go/bin/go /usr/local/bin/go \
