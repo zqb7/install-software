@@ -131,6 +131,7 @@ class Robot(object):
             real_download_url = ack.headers.get('Location')
             real_download_url = real_download_url.replace("az764295.vo.msecnd.net/stable","vscode.cdn.azure.cn/stable")
             if real_download_url.endswith('.tar.gz'):
+                commitd_id = None
                 with open('vscode.sh', 'r+') as f:
                     lines = f.readlines()
                     for index,line  in enumerate(lines):
@@ -141,11 +142,27 @@ class Robot(object):
                             f.seek(0)
                             f.truncate()
                             f.writelines(lines)
-                            print(f"更新成功:vscode {line.split('/')[-2]} --> {real_download_url.split('/')[-2]}")
+                            commitd_id = real_download_url.split('/')[-2]
+                            print(f"更新成功:vscode {line.split('/')[-2]} --> {commitd_id}")
                             self.changed.setdefault(f.name, real_download_url.split('/')[-2][:5])
                         else:
                             print(f"更新忽略:vscode 当前版本:{line.split('/')[-2]} --> 远程版本:{real_download_url.split('/')[-2]}")
                             break
+                self._vscode_cli(commitd_id)
+
+    def _vscode_cli(self, commit_id):
+        if commit_id:
+            with open("vscode_cli.sh", 'r+') as f:
+                lines = f.readlines()
+                for index,line  in enumerate(lines):
+                    if line.startswith('COMMITID') is False:
+                        continue
+                    before_commit_id = line.strip("COMMITID=").rstrip("\n")
+                    lines[index] = f"COMMITID={commit_id}\n"
+                    f.seek(0)
+                    f.truncate()
+                    f.writelines(lines)
+                    print(f"更新成功:vscode_cli {before_commit_id} --> {commit_id}")
 
     def tigervnc(self):
         ack = self.req.get("http://tigervnc.bphinz.com/nightly/nightly.html")
