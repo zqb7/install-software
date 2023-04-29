@@ -42,3 +42,8 @@ One-click installation of common software
 你可以使用以下命令查看有哪些脚本  
 You can use the following command to see which scripts are there  
 `curl -sSL install.sadeye.cn/index`
+
+##### 如果你觉得对你有帮助，可以请我喝咖啡~
+> <img src="https://github.com/zqhhh/_pkg/releases/download/pay/alipay.jpg" width="150"/>
+
+> <img src="https://github.com/zqhhh/_pkg/releases/download/pay/wechat.png" width="150"/>
