@@ -19,6 +19,7 @@ _main() {
     if [ -z "$(ls -A -p /var/lib/mysql)" ]; then
         cd /tmp \
         && wget -c https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz \
+        && chmod 666 mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz \
         && tar zxvf mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz \
         && ${SUDO} chown mysql:mysql /var/lib/mysql \
         && ${SUDO} mv mysql-5.7.35-linux-glibc2.12-x86_64/* /usr/local/mysql \

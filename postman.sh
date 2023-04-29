@@ -8,6 +8,7 @@ _main() {
 
 	cd /tmp \
 	&& wget -c $fileUrl -O $fileName \
+	&& chmod 666 $fileName \
 	&& ${SUDO} tar -zxvf $fileName -C /opt/ \
 	&& cat <<EOF >postman.svg
 <?xml version="1.0" encoding="utf-8"?>

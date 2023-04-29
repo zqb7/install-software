@@ -9,6 +9,7 @@ _main(){
 
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && tar -zxvf ${FILENAME} >/dev/null \
     && ${SUDO} mv code /usr/local/bin/vscode-cli \
     && echo "install vscode-cli success" 

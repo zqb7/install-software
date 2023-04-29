@@ -8,6 +8,7 @@ _main() {
 
     cd /tmp \
     && wget -c $file_url \
+    && chmod 666 $file_name \
     && ${SUDO} rm -rf /opt/sublime_text \
     && ${SUDO} tar -xvf $file_name -C /opt/ \
     && ${SUDO} rm -f /usr/share/applications/sublime_text.desktop \

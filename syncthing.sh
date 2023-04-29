@@ -16,6 +16,7 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && tar zxvf  ${FILENAME} \
     && cd ${FILENAME/.tar.gz} \
     && ${SUDO} cp syncthing /usr/local/bin/syncthing \

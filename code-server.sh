@@ -11,6 +11,7 @@ _main() {
 
   cd /tmp \
   && wget -c ${FILEURL} \
+  && chmod 666 ${FILENAME} \
   && tar zxvf  ${FILENAME} \
   && rm -rf /tmp/code-server \
   && mv ${FILENAME/.tar.gz} code-server \

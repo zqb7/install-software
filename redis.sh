@@ -5,6 +5,7 @@ _main() {
 
     cd /tmp \
     && wget -c http://download.redis.io/releases/redis-stable.tar.gz \
+    && chmod 666 redis-stable.tar.gz \
     && tar xzf redis-stable.tar.gz \
     && cd redis-stable \
     && make distclean \

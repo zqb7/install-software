@@ -18,6 +18,7 @@ FILENAME=lua-${VERSION#v}.tar.gz
 _main(){
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && tar -zxvf ${FILENAME} \
     && cd lua-${VERSION#v} \
     && ${SUDO} make linux \

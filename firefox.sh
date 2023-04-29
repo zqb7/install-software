@@ -8,6 +8,7 @@ _main() {
 
     cd /tmp \
     && wget -c $fileUrl -O $fileName \
+    && chmod 666 ${fileName} \
     && ${SUDO} tar -jxvf $fileName -C /opt/ \
     && echo """[Desktop Entry]
 Version=1.0

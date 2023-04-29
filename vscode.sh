@@ -8,6 +8,7 @@ _main() {
 
     cd /tmp \
     && wget -c $fileUrl -O $fileName \
+    && chmod 666 ${fileName} \
     && ${SUDO} tar --no-same-owner -zxvf $fileName -C /opt/
 
     if [ $? -ne 0 ];then

@@ -12,6 +12,7 @@ FILENAME=gh_${VERSION#v}_linux_amd64.tar.gz
 _main(){
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && tar -zxvf ${FILENAME} \
     && ${SUDO} cp gh_${VERSION#v}_linux_amd64/bin/gh  /usr/local/bin/gh \
     && echo "install gh  ${VERSION} success" 

@@ -14,6 +14,7 @@ FILENAME=rclone-${VERSION}-linux-amd64.zip
 _main() {
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && unzip -nq  ${FILENAME} \
     && cd ${FILENAME/.zip} \
     && ${SUDO} cp rclone /usr/local/bin/rclone \

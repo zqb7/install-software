@@ -13,6 +13,7 @@ FILENAME=upx-${VERSION#v}-amd64_linux.tar.xz
 _main(){
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && tar -xvf ${FILENAME} \
     && ${SUDO} cp upx-${VERSION#v}-amd64_linux/upx /usr/local/bin/upx \
     && echo "install upx  ${VERSION} success" 

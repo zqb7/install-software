@@ -13,7 +13,8 @@ _init() {
 
 _main() {
     cd /tmp \
-    && wget -c $FILEURL \
+    && wget -c ${FILEURL} \
+    && chmod 666 ${FILENAME} \
     && ${SUDO} rm -rf /usr/local/go \
     && ${SUDO} tar -C /usr/local -xzf $FILENAME \
     && ${SUDO} ln -sf /usr/local/go/bin/go /usr/local/bin/go \

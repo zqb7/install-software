@@ -22,6 +22,7 @@ _main() {
     fi
     cd /tmp \
     && wget -c ${FILEURL} \
+    && chmod 666 ${FILENAME} \
     && tar zxvf  ${FILENAME} \
     && cd protobuf-${VERSION#v} \
     && ${SUDO} ./configure \

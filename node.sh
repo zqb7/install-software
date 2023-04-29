@@ -16,6 +16,7 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 $FILENAME \
     && ${SUDO} tar --no-same-owner -xvf $FILENAME -C /opt/ \
     && ${SUDO} rm -rf /opt/node \
     && ${SUDO} mv /opt/${FILENAME%.tar.xz} /opt/node \

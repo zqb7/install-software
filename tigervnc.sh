@@ -10,6 +10,7 @@ _main() {
 
   cd /tmp \
   && wget --max-redirect=2 -c $fileUrl -O $fileName \
+  && chmod 666 $fileName \
   && tar zxvf $fileName \
   && mv ${fileName%.tar.gz} tigervnc \
   && ${SUDO} rm -rf /opt/tigervnc \

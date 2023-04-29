@@ -11,6 +11,7 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O drawio.AppImage \
+    && chmod 666 drawio.AppImage \
     && ${SUDO} mkdir -p /opt/drawio \
     && ${SUDO} cp drawio.AppImage /opt/drawio \
     && ${SUDO} chmod +x /opt/drawio/drawio.AppImage

@@ -8,6 +8,7 @@ _main(){
     which sudo >/dev/null && SUDO="sudo"
     cd /tmp \
     && wget -c $FILEURL \
+    && chmod 666 ${FILENAME} \
     && tar zxvf ${FILENAME} \
     && rm -rf /tmp/jdk \
     && mv ${UNZIPFILENAME} jdk \
