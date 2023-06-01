@@ -21,7 +21,7 @@ _main() {
         && wget -c https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz \
         && chmod 666 mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz \
         && tar zxvf mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz \
-        && ${SUDO} chown mysql:mysql /var/lib/mysql \
+        && ${SUDO} chown mysql:mysql /var/lib/mysql /var/run/mysqld \
         && ${SUDO} mv mysql-5.7.35-linux-glibc2.12-x86_64/* /usr/local/mysql \
         && echo "PATH=\$PATH:/usr/local/mysql/bin" | ${SUDO} tee /etc/profile.d/mysql.sh >/dev/null \
         && . /etc/profile.d/mysql.sh \
