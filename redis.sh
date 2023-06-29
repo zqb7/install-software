@@ -4,10 +4,10 @@ _main() {
     which sudo >/dev/null && SUDO="sudo"
 
     cd /tmp \
-    && wget -c http://download.redis.io/releases/redis-stable.tar.gz \
-    && chmod 666 redis-stable.tar.gz \
-    && tar xzf redis-stable.tar.gz \
-    && cd redis-stable \
+    && wget -c https://github.com/redis/redis/archive/7.0.11.tar.gz \
+    && chmod 666 7.0.11.tar.gz \
+    && tar xzf 7.0.11.tar.gz \
+    && cd redis-7.0.11 \
     && make distclean \
     && make \
     && ${SUDO} cp -r src/ /opt/redis \
