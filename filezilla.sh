@@ -18,7 +18,7 @@ _main() {
     && cd /opt \
     && ls -lh | grep -o "FileZilla[0-9]" \
     && ${SUDO} rm -rf filezilla \
-    && mv `ls -lh | grep -o "FileZilla[0-9]"` filezilla \
+    && ${SUDO} mv `ls -lh | grep -o "FileZilla[0-9]"` filezilla \
     && echo """[Desktop Entry]
 Name=FileZilla
 GenericName=FTP client
