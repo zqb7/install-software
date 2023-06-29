@@ -13,7 +13,8 @@ _main() {
     cd /tmp \
     && wget  -c $fileUrl -O FileZilla_x86_64-linux-gnu.tar.xz \
     && chmod 666 FileZilla_x86_64-linux-gnu.tar.xz \
-    && xz FileZilla_x86_64-linux-gnu.tar.xz \
+    && rm FileZilla_x86_64-linux-gnu.tar \
+    && xz -d FileZilla_x86_64-linux-gnu.tar.xz \
     && ${SUDO} tar xvf FileZilla_x86_64-linux-gnu.tar -C /opt \
     && cd /opt \
     && ls -lh | grep -o "FileZilla[0-9]" \
