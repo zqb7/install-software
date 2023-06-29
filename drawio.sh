@@ -4,7 +4,7 @@ VERSION="v21.5.1"
 
 if [ -n "$1" ];then VERSION=$1; fi
 
-FILEURL=https://github.com/jgraph/drawio-desktop/releases/download/v${VERSION}/drawio-x86_64-${VERSION}.AppImage
+FILEURL=https://github.com/jgraph/drawio-desktop/releases/download/v${VERSION#v}/drawio-x86_64-${VERSION#v}.AppImage
 
 _main() {
     which sudo >/dev/null && SUDO="sudo"
