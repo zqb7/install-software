@@ -11,9 +11,10 @@ _main() {
         exit 1
     fi
     cd /tmp \
-    && wget  -c $fileUrl -O FileZilla_x86_64-linux-gnu.tar.bz2 \
-    && chmod 666 FileZilla_x86_64-linux-gnu.tar.bz2 \
-    && ${SUDO} tar jxvf FileZilla_x86_64-linux-gnu.tar.bz2 -C /opt \
+    && wget  -c $fileUrl -O FileZilla_x86_64-linux-gnu.tar.xz \
+    && chmod 666 FileZilla_x86_64-linux-gnu.tar.xz \
+    && xz FileZilla_x86_64-linux-gnu.tar.xz \
+    && ${SUDO} tar xvf FileZilla_x86_64-linux-gnu.tar -C /opt \
     && cd /opt \
     && ls -lh | grep -o "FileZilla[0-9]" \
     && ${SUDO} rm -rf filezilla \
