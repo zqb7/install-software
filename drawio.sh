@@ -17,7 +17,7 @@ _main() {
     && ${SUDO} chmod +x /opt/drawio/drawio.AppImage
 
     [ $? -ne 0 ] && return
-    ${SUDO} cat << EOF > /opt/drawio/drawio.svg
+    cat << EOF > /tmp/drawio.svg
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -53,6 +53,7 @@ Comment=diagrams.net desktop
 MimeType=application/vnd.jgraph.mxfile;application/vnd.visio;
 Categories=Graphics;
 """ | ${SUDO} tee  /usr/share/applications/drawio.desktop >/dev/null \
+    && ${SUDO} cp /tmp/drawio.svg /opt/drawio/drawio.svg \
     && echo "install drawio ${VERSION} success"
 }
 
