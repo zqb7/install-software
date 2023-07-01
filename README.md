@@ -32,7 +32,6 @@ One-click installation of common software
     - node.sh
     - ohmyzsh.sh
     - protoc.sh
-    - rclone.sh
     - redis.sh
     - syncthing.sh
     - tigervnc.sh
