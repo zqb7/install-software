@@ -11,11 +11,12 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
+    && wget -c https://github.com/zqhhh/_pkg/releases/download/desktop.icon/JoplinIcon.svg \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/joplin \
     && ${SUDO} cp ${FILENAME} /opt/joplin \
     && ${SUDO} chmod +x /opt/joplin/${FILENAME} \
-    && ${SUDO} wget -c https://github.com/zqhhh/_pkg/releases/download/desktop.icon/JoplinIcon.svg -O /opt/joplin/JoplinIcon.svg \
+    && ${SUDO} cp JoplinIcon.svg /opt/joplin/JoplinIcon.svg \
     && echo """[Desktop Entry]
 Name=Joplin
 Exec=/opt/joplin/Joplin.AppImage

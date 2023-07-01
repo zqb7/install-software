@@ -11,11 +11,12 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
+    && wget -c https://github.com/zqhhh/_pkg/releases/download/desktop.icon/another-redis-desktop-manager.png \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/anotherRedisDesktopManager \
     && ${SUDO} cp ${FILENAME} /opt/anotherRedisDesktopManager \
     && ${SUDO} chmod +x /opt/anotherRedisDesktopManager/${FILENAME} \
-    && ${SUDO} wget -c https://github.com/zqhhh/_pkg/releases/download/desktop.icon/another-redis-desktop-manager.png -O /opt/anotherRedisDesktopManager/another-redis-desktop-manager.png  \
+    && ${SUDO} cp another-redis-desktop-manager.png /opt/anotherRedisDesktopManager/another-redis-desktop-manager.png  \
     && echo """[Desktop Entry]
 Name=Another Redis Desktop Manager
 Exec=/opt/anotherRedisDesktopManager/Another-Redis-Desktop-Manager.AppImage
