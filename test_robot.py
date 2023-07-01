@@ -65,6 +65,12 @@ class TestRobot(TestCase):
     def test_lua(self):
         self.robot.lua()
 
+    def test_another_redis_desktop_manager(self):
+        self.robot.another_redis_desktop_manager()
+
+    def test_joplin(self):
+        self.robot.joplin()
+
     def test_compare_verion(self):
         self.assertTrue(self.robot._compare_verion("v1.2.3","v1.3"))
         self.assertTrue(self.robot._compare_verion("v1.3.3","v1.3.4"))
