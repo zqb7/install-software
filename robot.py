@@ -114,10 +114,6 @@ class Robot(object):
         with open("protoc.sh","r+") as f:
             self._change_version_tag_github(f,"protocolbuffers/protobuf")
 
-    def rclone(self):
-        with open("rclone.sh","r+") as f:
-            self._change_version_tag_github(f,"rclone/rclone")
-
     def sublime_text(self):
         pass
 
