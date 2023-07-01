@@ -19,7 +19,7 @@ _main() {
     && ${SUDO} cp another-redis-desktop-manager.png /opt/anotherRedisDesktopManager/another-redis-desktop-manager.png  \
     && echo """[Desktop Entry]
 Name=Another Redis Desktop Manager
-Exec=/opt/anotherRedisDesktopManager/Another-Redis-Desktop-Manager.AppImage
+Exec=/opt/anotherRedisDesktopManager/Another-Redis-Desktop-Manager.AppImage --no-sandbox
 Terminal=false
 Type=Application
 Icon=/opt/anotherRedisDesktopManager/another-redis-desktop-manager.png 

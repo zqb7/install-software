@@ -11,18 +11,18 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
-    && wget -c https://github.com/zqhhh/_pkg/releases/download/desktop.icon/JoplinIcon.svg \
+    && wget -c https://github.com/zqhhh/_pkg/releases/download/desktop.icon/joplin.png \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/joplin \
     && ${SUDO} cp ${FILENAME} /opt/joplin \
     && ${SUDO} chmod +x /opt/joplin/${FILENAME} \
-    && ${SUDO} cp JoplinIcon.svg /opt/joplin/JoplinIcon.svg \
+    && ${SUDO} cp joplin.png /opt/joplin/joplin.png\
     && echo """[Desktop Entry]
 Name=Joplin
-Exec=/opt/joplin/Joplin.AppImage
+Exec=/opt/joplin/Joplin.AppImage --no-sandbox
 Terminal=false
 Type=Application
-Icon=/opt/joplin/JoplinIcon.svg 
+Icon=/opt/joplin/joplin.png
 StartupWMClass=Joplin
 X-AppImage-Version=${VERSION#v}
 MimeType=x-scheme-handler/joplin;
