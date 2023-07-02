@@ -20,6 +20,9 @@ One-click installation of common software
     - postman.sh
     - sublime_text.sh
     - vscode.sh
+    - pycharm.sh
+    - another_redis_desktop_manager.sh
+    - joplin.sh
 + 终端应用(Terminal Application)
     - code-server.sh
     - docker-compose.sh
