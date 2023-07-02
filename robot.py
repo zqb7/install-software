@@ -189,6 +189,12 @@ class Robot(object):
     def joplin(self):
         with open("joplin.sh","r+") as f:
             self._change_version_tag_github(f,"laurent22/joplin")
+    
+    def pycharm(self):
+        ack = self.req.get('https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=release', allow_redirects=False)
+        version = ack.json()['PCP'][0]['version']
+        with open('pycharm.sh', 'r+') as f:
+            self._update_version(f, version=version)
 
     # 只用于修改从github检查版本号的脚本文件
     def _change_version_tag_github(self,f:TextIO,name:str):
@@ -239,7 +245,20 @@ class Robot(object):
             f.seek(0)
             f.truncate()
             f.writelines(lines)
-    
+
+    # 仅修改版本号
+    def _update_version(self, f: TextIO, version: str):
+        lines = f.readlines()
+        for index, line in enumerate(lines):
+            if line.startswith("VERSION="):
+                now_version = line.split("=")[-1].rstrip("\n").strip('"')
+                if self._compare_verion(now_version, version):
+                    lines[index] = f'VERSION="{version}"\n'
+                    self.changed.setdefault(f.name, version)
+                    f.seek(0)
+                    f.truncate()
+                    f.writelines(lines)
+
     # 比较版本号 latestV是否大于nowV
     def _compare_verion(self,nowV:str, latestV:str) ->bool:
         nowVersionNumArr = nowV.lstrip("v").split(".")
