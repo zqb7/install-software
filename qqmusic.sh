@@ -23,7 +23,7 @@ StartupWMClass=qqmusic
 Comment=Tencent QQMusic
 Categories=AudioVideo;
 """ | ${SUDO} tee  /usr/share/applications/qqmusic.desktop >/dev/null \
-    && echo "install qq success"
+    && echo "install qqmusic success"
 }
 
 _main
