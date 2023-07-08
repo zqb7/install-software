@@ -195,6 +195,28 @@ class Robot(object):
         version = ack.json()['PCP'][0]['version']
         with open('pycharm.sh', 'r+') as f:
             self._update_version(f, version=version)
+    
+    def qq(self):
+        ack = self.req.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
+        if ack.status_code == 200:
+            match = re.search(r'https://dldir1.qq.com/qqfile/qq/QQNT/[a-zA-Z0-9]+/linuxqq_\d+\.\d+\.\d+-\d+_x86_64.AppImage', ack.text)
+            if match:
+                url = match.group()
+                with open('qq.sh', 'r+') as f:
+                    self._update_url(f, url)
+            else:
+                print(f"更新qq失败,没有提取到下载地址")
+
+    def qqmusic(self):
+        ack = self.req.get("https://y.qq.com/download/download.html")
+        if ack.status_code == 200:
+            match = re.search(r'https://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-\d+\.\d+\.\d+.AppImage', ack.text)
+            if match:
+                url = match.group()
+                with open('qqmusic.sh', 'r+') as f:
+                    self._update_url(f, url)
+            else:
+                print(f"更新qqmusic失败,没有提取到下载地址")
 
     # 只用于修改从github检查版本号的脚本文件
     def _change_version_tag_github(self,f:TextIO,name:str):
@@ -255,6 +277,19 @@ class Robot(object):
                 if self._compare_verion(now_version, version):
                     lines[index] = f'VERSION="{version}"\n'
                     self.changed.setdefault(f.name, version)
+                    f.seek(0)
+                    f.truncate()
+                    f.writelines(lines)
+
+    # 仅修改URL
+    def _update_url(self, f: TextIO, url: str):
+        lines = f.readlines()
+        for index, line in enumerate(lines):
+            if line.startswith("FILEURL="):
+                now_url = line.split("=")[-1].rstrip("\n").strip('"')
+                if now_url != url:
+                    lines[index] = f'FILEURL="{url}"\n'
+                    self.changed.setdefault(f.name, "latest")
                     f.seek(0)
                     f.truncate()
                     f.writelines(lines)

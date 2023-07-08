@@ -74,6 +74,12 @@ class TestRobot(TestCase):
     def test_pycharm(self):
         self.robot.pycharm()
 
+    def test_qq(self):
+        self.robot.qq()
+
+    def test_qqmusic(self):
+        self.robot.qqmusic()
+
     def test_compare_verion(self):
         self.assertTrue(self.robot._compare_verion("v1.2.3","v1.3"))
         self.assertTrue(self.robot._compare_verion("v1.3.3","v1.3.4"))
