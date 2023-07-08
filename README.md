@@ -23,6 +23,8 @@ One-click installation of common software
     - pycharm.sh
     - another_redis_desktop_manager.sh
     - joplin.sh
+    - qq.sh
+    - qqmusic.sh
 + 终端应用(Terminal Application)
     - code-server.sh
     - docker-compose.sh
