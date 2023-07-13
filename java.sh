@@ -14,6 +14,8 @@ _main(){
     && mv ${UNZIPFILENAME} jdk \
     && ${SUDO} rm -rf /opt/jdk \
     && ${SUDO} cp -r jdk /opt/jdk \
+    && echo "export PATH=\$PATH:/opt/jdk/bin" | ${SUDO} tee  /etc/profile.d/jdk.sh \
+    && ${SUDO} chmod +x /etc/profile.d/jdk.sh \
     && echo """--------------------------------
 install ${UNZIPFILENAME} success
 you may need set:  export PATH=\$PATH:/opt/jdk/bin
