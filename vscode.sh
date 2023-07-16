@@ -83,7 +83,7 @@ Exec=/opt/VSCode-linux-x64/code --no-sandbox --new-window %F
 Icon=/opt/VSCode-linux-x64/vscode.svg
 """ | ${SUDO} tee /opt/VSCode-linux-x64/vscode.desktop >/dev/null \
     && ${SUDO} ln -fs  /opt/VSCode-linux-x64/vscode.desktop /usr/share/applications/code.desktop \
-    && ${SUDO} ln -s /opt/VSCode-linux-x64/code /usr/local/bin/code \
+    && ${SUDO} ln -fs /opt/VSCode-linux-x64/code /usr/local/bin/code \
     && echo "install vscode latest success"
 }
 
