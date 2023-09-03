@@ -49,6 +49,6 @@ You can use the following command to see which scripts are there
 
 ##### 如果你觉得对你有帮助，可以请我喝咖啡~
 -
-> <img src="https://github.com/zqhhh/_pkg/releases/download/pay/alipay.jpg" width="180"/>
+> <img src="https://github.com/zqhhh/storage/releases/download/pay/alipay.jpg" width="180"/>
 -
-> <img src="https://github.com/zqhhh/_pkg/releases/download/pay/wechat.png" width="180"/>
+> <img src="https://github.com/zqhhh/storage/releases/download/pay/wechat.png" width="180"/>

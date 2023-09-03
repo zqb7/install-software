@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILEURL="https://github.com/zqhhh/_pkg/releases/download/jdk/jdk-8u231-linux-x64.tar.gz"
+FILEURL="https://github.com/zqhhh/storage/releases/download/jdk/jdk-8u231-linux-x64.tar.gz"
 FILENAME=jdk-8u231-linux-x64.tar.gz
 UNZIPFILENAME=jdk1.8.0_231
 
