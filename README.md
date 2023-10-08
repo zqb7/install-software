@@ -1,5 +1,5 @@
-# auto-install-software
-One-click installation of common software
+# install-software
+Install software with one line of command
 
 
 
