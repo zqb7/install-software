@@ -35,7 +35,6 @@ Install software with one line of command
     - java.sh
     - mysql.sh
     - node.sh
-    - ohmyzsh.sh
     - protoc.sh
     - redis.sh
     - syncthing.sh
