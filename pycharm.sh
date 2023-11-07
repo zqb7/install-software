@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2023.2.3"
+VERSION="2023.2.4"
 
 if [ -n "$1" ];then VERSION=$1; fi
 
