@@ -25,6 +25,7 @@ Install software with one line of command
     - joplin.sh
     - qq.sh
     - qqmusic.sh
+    - redisInsight.sh
 + 终端应用(Terminal Application)
     - code-server.sh
     - docker-compose.sh
