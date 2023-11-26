@@ -11,7 +11,7 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
-    && wget -c https://github.com/zqhhh/storage/releases/download/desktop.icon/joplin.png \
+    && wget -c https://github.com/qilook/storage/releases/download/desktop.icon/joplin.png \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/joplin \
     && ${SUDO} cp ${FILENAME} /opt/joplin \
