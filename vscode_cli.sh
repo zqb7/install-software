@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMMITID=704ed70d4fd1c6bd6342c436f1ede30d1cff4710
+COMMITID=1a5daa3a0231a0fbba4f14db7ec463cf99d7768e
 FILEURL="https://az764295.vo.msecnd.net/stable/${COMMITID}/vscode_cli_alpine_x64_cli.tar.gz"
 FILENAME=`echo $FILEURL|awk -F "/" '{print $NF}'`
 
