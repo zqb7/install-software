@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILEURL=https://download.redisinsight.redis.com/latest/RedisInsight-v2-linux-x86_64.AppImage
+FILEURL=https://download.redisinsight.redis.com/latest/RedisInsight-linux-x86_64.AppImage
 FILENAME=RedisInsight.AppImage
 
 _main() {
