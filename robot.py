@@ -27,11 +27,6 @@ class Robot(object):
             origin.push()
         
 
-
-    def code_server(self):
-        with open("code-server.sh","r+") as f:
-            self._change_version_tag_github(f,"cdr/code-server")
-
     def docker_compose(self):
         with open("docker-compose.sh","r+") as f:
             self._change_version_tag_github(f,"docker/compose")

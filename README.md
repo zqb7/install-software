@@ -27,7 +27,6 @@ Install software with one line of command
     - qqmusic.sh
     - redisInsight.sh
 + 终端应用(Terminal Application)
-    - code-server.sh
     - docker-compose.sh
     - etcd.sh
     - gh.sh
