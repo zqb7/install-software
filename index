@@ -1,5 +1,4 @@
 sh -c "$(curl -fsSL install.sadeye.cn/another_redis_desktop_manager.sh)"
-sh -c "$(curl -fsSL install.sadeye.cn/code-server.sh)"
 sh -c "$(curl -fsSL install.sadeye.cn/dbeaver.sh)"
 sh -c "$(curl -fsSL install.sadeye.cn/docker-compose.sh)"
 sh -c "$(curl -fsSL install.sadeye.cn/drawio.sh)"
