@@ -26,6 +26,7 @@ Install software with one line of command
     - qq.sh
     - qqmusic.sh
     - redisInsight.sh
+    - hoppscotch.sh
 + 终端应用(Terminal Application)
     - docker-compose.sh
     - etcd.sh

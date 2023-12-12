@@ -141,6 +141,9 @@ class Robot(object):
                             break
                 self._vscode_cli(commitd_id)
 
+    def hoppscotch(self):
+        pass
+
     def _vscode_cli(self, commit_id):
         if commit_id:
             with open("vscode_cli.sh", 'r+') as f:
