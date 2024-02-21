@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILEURL="https://dldir1.qq.com/qqfile/qq/QQNT/feb78c41/linuxqq_3.2.5-21159_x86_64.AppImage"
+FILEURL="https://dldir1.qq.com/qqfile/qq/QQNT/852276c1/linuxqq_3.2.5-21453_x86_64.AppImage"
 FILENAME=qq.AppImage
 _main() {
     which sudo >/dev/null && SUDO="sudo"
