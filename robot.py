@@ -65,7 +65,7 @@ class Robot(object):
             self._change_version_tag_github(f,"cli/cli")
 
     def go(self):
-        ack = self.req.get('https://golang.org/dl/')
+        ack = self.req.get('https://go.dev/dl/')
         if ack.status_code == 200:
             match = re.search(r'.*download downloadBox.*go(.*)\.linux-amd64.*gz"',ack.text)
             if match:
