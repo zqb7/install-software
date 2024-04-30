@@ -84,6 +84,7 @@ Icon=/opt/VSCode-linux-x64/vscode.svg
 """ | ${SUDO} tee /opt/VSCode-linux-x64/vscode.desktop >/dev/null \
     && ${SUDO} ln -fs  /opt/VSCode-linux-x64/vscode.desktop /usr/share/applications/code.desktop \
     && ${SUDO} ln -fs /opt/VSCode-linux-x64/code /usr/local/bin/code \
+    && ${SUDO} ln -fs /opt/VSCode-linux-x64/code-tunnel /usr/local/bin/code-tunnel \
     && echo "install vscode latest success"
 }
 
