@@ -42,6 +42,14 @@ Install software with one line of command
     - tigervnc.sh
     - upx.sh
 
+### install
+##### 1. Clone to local
+`git clone https://github.com/zqb7/install-software.git ~/.install-software`
+##### 2. Create link
+`ln -sf yourpath/.install-software/install-software  /usr/local/bin/install-software`
+##### 3. Use
+`install-software vscode`
+
 ### HELP
 你可以使用以下命令查看有哪些脚本  
 You can use the following command to see which scripts are there  

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+function set_cwd() {
+    cd "$(dirname "$0")"
+}
+
+function update() {
+    git pull
+}
+
+function main() {
+    case $1 in
+        dbeaver)
+        exec bash dbeaver.sh
+        ;;
+        drawio)
+        exec bash drawio.sh
+        ;;
+        filezilla)
+        exec bash filezilla.sh
+        ;;
+        firefox)
+        exec bash firefox.sh
+        ;;
+        postman)
+        exec bash postman.sh
+        ;;
+        sublime_text)
+        exec bash sublime_text.sh
+        ;;
+        vscode)
+        exec bash vscode.sh
+        ;;
+        pycharm)
+        exec bash pycharm.sh
+        ;;
+        another_redis_desktop_manager)
+        exec bash another_redis_desktop_manager.sh
+        ;;
+        joplin)
+        exec bash joplin.sh
+        ;;
+        qq)
+        exec bash qq.sh
+        ;;
+        qqmusic)
+        exec bash qqmusic.sh
+        ;;
+        redisInsight)
+        exec bash redisInsight.sh
+        ;;
+        hoppscotch)
+        exec bash hoppscotch.sh
+        ;;
+        *)
+        echo $1
+        ;;
+    esac
+}
+
+set_cwd
+main $@
