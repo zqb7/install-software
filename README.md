@@ -4,8 +4,13 @@ Install software with one line of command
 ### install
 ##### 1. Clone to local
 `git clone https://github.com/zqb7/install-software.git ~/.install-software`
-##### 2. Create link
-`ln -sf yourpath/.install-software/install-software  /usr/local/bin/install-software`
+##### 2. Edit "~/.bashrc" OR "~/.zshrc"
+```
+#export PATH=$PATH:$HOME/.install-software/bin
+#source ~/.bashrc
+or
+#source ~/.zshrc
+```
 ##### 3. Use
 `install-software vscode`
 
