@@ -7,7 +7,7 @@ _main() {
     which sudo >/dev/null && SUDO="sudo"
 
     cd /tmp \
-    && wget --max-redirect=2 -c https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz \
+    && wget --max-redirect=4 -c https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz \
     && chmod 666 dbeaver-ce-latest-linux.gtk.x86_64.tar.gz \
     && ${SUDO} tar -zxvf dbeaver-ce-latest-linux.gtk.x86_64.tar.gz -C /opt \
     && echo """[Desktop Entry]
