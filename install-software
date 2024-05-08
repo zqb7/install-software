@@ -10,47 +10,91 @@ function update() {
 
 function main() {
     case $1 in
+        update)
+            update
+        ;;
         dbeaver)
-        exec bash dbeaver.sh
+            exec bash dbeaver.sh $2
         ;;
         drawio)
-        exec bash drawio.sh
+            exec bash drawio.sh $2
         ;;
         filezilla)
-        exec bash filezilla.sh
+            exec bash filezilla.sh $2
         ;;
         firefox)
-        exec bash firefox.sh
+            exec bash firefox.sh $2
         ;;
         postman)
-        exec bash postman.sh
+            exec bash postman.sh $2
         ;;
         sublime_text)
-        exec bash sublime_text.sh
+            exec bash sublime_text.sh $2
         ;;
         vscode)
-        exec bash vscode.sh
+            exec bash vscode.sh $2
         ;;
         pycharm)
-        exec bash pycharm.sh
+            exec bash pycharm.sh $2
         ;;
         another_redis_desktop_manager)
-        exec bash another_redis_desktop_manager.sh
+            exec bash another_redis_desktop_manager.sh $2
         ;;
         joplin)
-        exec bash joplin.sh
+            exec bash joplin.sh $2
         ;;
         qq)
-        exec bash qq.sh
+            exec bash qq.sh $2
         ;;
         qqmusic)
-        exec bash qqmusic.sh
+            exec bash qqmusic.sh $2
         ;;
         redisInsight)
-        exec bash redisInsight.sh
+            exec bash redisInsight.sh $2
         ;;
         hoppscotch)
-        exec bash hoppscotch.sh
+            exec bash hoppscotch.sh $2
+        ;;
+
+        # cli
+        docker-compose)
+            exec bash docker-compose.sh $2
+        ;;
+        etcd)
+            exec bash etcd.sh $2
+        ;;
+        gh)
+            exec bash gh.sh $2
+        ;;
+        go)
+            exec bash go.sh $2
+        ;;
+        hugo)
+            exec bash hugo.sh $2
+        ;;
+        java)
+            exec bash java.sh $2
+        ;;
+        mysql)
+            exec bash mysql.sh $2
+        ;;
+        node)
+            exec bash node.sh $2
+        ;;
+        protoc)
+            exec bash protoc.sh $2
+        ;;
+        redis)
+            exec bash redis.sh $2
+        ;;
+        syncthing)
+            exec bash syncthing.sh $2
+        ;;
+        tigervnc)
+            exec bash tigervnc.sh $2
+        ;;
+        upx)
+            exec bash upx.sh $2
         ;;
         *)
         echo $1
