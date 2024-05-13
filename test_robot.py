@@ -29,9 +29,6 @@ class TestRobot(TestCase):
     def test_java(self):
         pass
     
-    def test_node(self):
-        self.robot.node()
-    
     def test_ohmyzsh(self):
         self.robot.ohmyzsh()
 

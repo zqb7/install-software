@@ -95,10 +95,6 @@ class Robot(object):
     def java(self):
         pass
 
-    def node(self):
-        with open("node.sh","r+") as f:
-            self._change_version_tag_github(f,"nodejs/node")
-
     def ohmyzsh(self):
         pass
 
