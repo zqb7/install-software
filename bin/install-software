@@ -9,6 +9,10 @@ function update() {
     git pull
 }
 
+functon install_nvm() {
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+}
+
 function main() {
     case $1 in
         update)
@@ -96,6 +100,10 @@ function main() {
         ;;
         upx)
             exec bash upx.sh $2
+        ;;
+
+        nvm)
+            exec install_nvm
         ;;
         *)
         echo $1
