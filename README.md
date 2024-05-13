@@ -24,7 +24,6 @@ or
     - sublime_text.sh
     - vscode.sh
     - pycharm.sh
-    - another_redis_desktop_manager.sh
     - joplin.sh
     - qq.sh
     - qqmusic.sh
@@ -37,10 +36,7 @@ or
     - go.sh
     - hugo.sh
     - java.sh
-    - mysql.sh
-    - node.sh
     - protoc.sh
-    - redis.sh
     - syncthing.sh
     - tigervnc.sh
     - upx.sh
