@@ -62,9 +62,6 @@ class TestRobot(TestCase):
     def test_lua(self):
         self.robot.lua()
 
-    def test_another_redis_desktop_manager(self):
-        self.robot.another_redis_desktop_manager()
-
     def test_joplin(self):
         self.robot.joplin()
 

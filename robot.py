@@ -176,10 +176,6 @@ class Robot(object):
         with open("lua.sh","r+") as f:
             self._change_version_tag_github(f,"lua/lua")
 
-    def another_redis_desktop_manager(self):
-        with open("another_redis_desktop_manager.sh","r+") as f:
-            self._change_version_tag_github(f,"qishibo/AnotherRedisDesktopManager")
-
     def joplin(self):
         with open("joplin.sh","r+") as f:
             self._change_version_tag_github(f,"laurent22/joplin")
