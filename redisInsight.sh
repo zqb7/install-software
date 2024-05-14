@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
+
 FILEURL=https://download.redisinsight.redis.com/latest/RedisInsight-linux-x86_64.AppImage
 FILENAME=RedisInsight.AppImage
 
@@ -8,22 +10,12 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
-    && wget -c https://github.com/qilook/storage/releases/download/desktop.icon/RedisInsight.png \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/redisInsight \
     && ${SUDO} cp ${FILENAME} /opt/redisInsight \
     && ${SUDO} chmod +x /opt/redisInsight/${FILENAME} \
-    && ${SUDO} cp RedisInsight.png  /opt/redisInsight/RedisInsight.png \
-    && echo """[Desktop Entry]
-Name=RedisInsight
-Exec=/opt/redisInsight/RedisInsight.AppImage --no-sandbox
-Terminal=false
-Type=Application
-Icon=/opt/redisInsight/RedisInsight.png
-StartupWMClass=RedisInsight-v2
-Comment=RedisInsight
-Categories=Development;
-""" | ${SUDO} tee  /usr/share/applications/RedisInsight.desktop >/dev/null \
+    && ${SUDO} cp ${SHELL_FOLDER}/icon/RedisInsight.png  /opt/redisInsight/RedisInsight.png \
+    && ${SUDO} cp ${SHELL_FOLDER}/desktop/redisInsight.desktop /usr/share/applications/redisInsight.desktop \
     && echo "install ${FILENAME} success"
 }
 

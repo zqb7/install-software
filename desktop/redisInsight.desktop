@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RedisInsight
+Exec=/opt/redisInsight/RedisInsight.AppImage --no-sandbox
+Terminal=false
+Type=Application
+Icon=/opt/redisInsight/RedisInsight.png
+StartupWMClass=RedisInsight-v2
+Comment=RedisInsight
+Categories=Development;
