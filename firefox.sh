@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
+
 fileUrl="https://download-installer.cdn.mozilla.net/pub/firefox/releases/125.0.3/linux-x86_64/zh-CN/firefox-125.0.3.tar.bz2"
 fileName="Firefox-latest-x86_64.tar.bz2"
 
@@ -10,17 +12,7 @@ _main() {
     && wget -c $fileUrl -O $fileName \
     && chmod 666 ${fileName} \
     && ${SUDO} tar -jxvf $fileName -C /opt/ \
-    && echo """[Desktop Entry]
-Version=1.0
-Type=Application
-Name=firefox
-Icon=/opt/firefox/browser/chrome/icons/default/default128.png
-Exec="/opt/firefox/firefox"
-Comment=firefox;
-Categories=Development;tool;
-Terminal=false
-StartupWMClass=firefox
-""" | ${SUDO} tee /opt/firefox/firefox.desktop >/dev/null \
+    && ${SUDO} cp ${SHELL_FOLDER}/desktop/firefox.desktop /opt/firefox/firefox.desktop \
     && ${SUDO} ln -fs /opt/firefox/firefox.desktop /usr/share/applications/firefox.desktop \
     && ${SUDO} ln -fs /opt/firefox/firefox /usr/local/bin/firefox \
     && echo "install firefox latest success"

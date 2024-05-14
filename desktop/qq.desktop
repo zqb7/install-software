@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QQ
+Exec=/opt/qq/qq.AppImage --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=/opt/qq/qq.png
+StartupWMClass=QQ
+Categories=Network;
+Comment=QQ

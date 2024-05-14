@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=hoppscotch
+Exec=/opt/hoppscotch/Hoppscotch_linux_x64.AppImage --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=/opt/hoppscotch/hoppscotch.png
+StartupWMClass=hoppscotch
+Comment=hoppscotch
+Categories=AudioVideo;

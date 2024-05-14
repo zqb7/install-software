@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=firefox
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Exec="/opt/firefox/firefox"
+Comment=firefox;
+Categories=Development;tool;
+Terminal=false
+StartupWMClass=firefox

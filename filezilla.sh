@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
 
 _main() {
     which sudo >/dev/null && SUDO="sudo"
@@ -19,23 +20,7 @@ _main() {
     && ls -lh | grep -o "FileZilla[0-9]" \
     && ${SUDO} rm -rf filezilla \
     && ${SUDO} mv `ls -lh | grep -o "FileZilla[0-9]"` filezilla \
-    && echo """[Desktop Entry]
-Name=FileZilla
-GenericName=FTP client
-GenericName[da]=FTP-klient
-GenericName[de]=FTP-Client
-GenericName[fr]=Client FTP
-Comment=Download and upload files via FTP, FTPS and SFTP
-Comment[da]=Download og upload filer via FTP, FTPS og SFTP
-Comment[de]=Dateien über FTP, FTPS und SFTP übertragen
-Comment[fr]=Transférer des fichiers via FTP, FTPS et SFTP
-Exec=/opt/filezilla/bin/filezilla
-Terminal=false
-Icon=/opt/filezilla/share/pixmaps/filezilla.png
-Type=Application
-Categories=Network;FileTransfer;
-Version=1.0
-""" | ${SUDO} tee /usr/share/applications/filezilla.desktop >/dev/null \
+    && ${SUDO} cp ${SHELL_FOLDER}/desktop/filezilla.desktoparrow.com /usr/share/applications/filezilla.desktop >/dev/null \
     && echo "install filezilla latest success"
 }
 

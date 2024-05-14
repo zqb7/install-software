@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
+
 FILEURL="https://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-1.1.5.AppImage"
 FILENAME=qqmusic.AppImage
 _main() {
@@ -7,22 +9,12 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
-    && wget -c https://github.com/qilook/storage/releases/download/desktop.icon/qqmusic.png \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/qqmusic \
     && ${SUDO} cp ${FILENAME} /opt/qqmusic \
     && ${SUDO} chmod +x /opt/qqmusic/${FILENAME} \
-    && ${SUDO} cp qqmusic.png /opt/qqmusic/qqmusic.png  \
-    && echo """[Desktop Entry]
-Name=qqmusic
-Exec=/opt/qqmusic/qqmusic.AppImage --no-sandbox %U
-Terminal=false
-Type=Application
-Icon=/opt/qqmusic/qqmusic.png
-StartupWMClass=qqmusic
-Comment=Tencent QQMusic
-Categories=AudioVideo;
-""" | ${SUDO} tee  /usr/share/applications/qqmusic.desktop >/dev/null \
+    && ${SUDO} cp ${SHELL_FOLDER}/icon/qqmusic.png /opt/qqmusic/qqmusic.png  \
+    && ${SUDO} cp ${SHELL_FOLDER}/desktop/qqmusic.desktop /usr/share/applications/qqmusic.desktop \
     && echo "install qqmusic success"
 }
 

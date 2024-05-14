@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
+
 VERSION="v2.14.20"
 
 if [ -n "$1" ];then VERSION=$1; fi
@@ -11,24 +13,12 @@ _main() {
 
     cd /tmp \
     && wget -c $FILEURL -O ${FILENAME} \
-    && wget -c https://github.com/qilook/storage/releases/download/desktop.icon/joplin.png \
     && chmod 666 ${FILENAME} \
     && ${SUDO} mkdir -p /opt/joplin \
     && ${SUDO} cp ${FILENAME} /opt/joplin \
     && ${SUDO} chmod +x /opt/joplin/${FILENAME} \
-    && ${SUDO} cp joplin.png /opt/joplin/joplin.png\
-    && echo """[Desktop Entry]
-Name=Joplin
-Exec=/opt/joplin/Joplin.AppImage --no-sandbox
-Terminal=false
-Type=Application
-Icon=/opt/joplin/joplin.png
-StartupWMClass=Joplin
-X-AppImage-Version=${VERSION#v}
-MimeType=x-scheme-handler/joplin;
-Comment=Joplin for Desktop
-Categories=Office;
-""" | ${SUDO} tee  /usr/share/applications/joplinapp.desktop >/dev/null \
+    && ${SUDO} cp ${SHELL_FOLDER}/icon/joplin.png /opt/joplin/joplin.png \
+    && ${SUDO} cp ${SHELL_FOLDER}/desktop/joplin.desktop /usr/share/applications/joplinapp.desktop >/dev/null \
     && echo "install ${FILENAME} ${VERSION} success"
 }
 
