@@ -20,7 +20,6 @@ or
     - drawio.sh
     - filezilla.sh
     - firefox.sh
-    - postman.sh
     - sublime_text.sh
     - vscode.sh
     - pycharm.sh
