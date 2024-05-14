@@ -4,7 +4,7 @@ Install software with one line of command
 ### install
 ##### 1. Clone to local
 `git clone https://github.com/zqb7/install-software.git ~/.install-software`
-##### 2. Edit "~/.bashrc" OR "~/.zshrc"
+##### 2. Edit ~/.bashrc OR ~/.zshrc
 ```
 #export PATH=$PATH:$HOME/.install-software/bin
 #source ~/.bashrc
