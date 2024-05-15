@@ -12,33 +12,40 @@ or
 #source ~/.zshrc
 ```
 ##### 3. Use
-`install-software vscode`
+```
+------------------update--------------
+install-software update
+-------------------------------------
 
-### 分类(Category)
-+ 桌面应用(Desktop Application)
-    - dbeaver.sh
-    - drawio.sh
-    - filezilla.sh
-    - firefox.sh
-    - sublime_text.sh
-    - vscode.sh
-    - pycharm.sh
-    - joplin.sh
-    - qq.sh
-    - qqmusic.sh
-    - redisInsight.sh
-    - hoppscotch.sh
-+ 终端应用(Terminal Application)
-    - docker-compose.sh
-    - etcd.sh
-    - gh.sh
-    - go.sh
-    - hugo.sh
-    - java.sh
-    - protoc.sh
-    - syncthing.sh
-    - tigervnc.sh
-    - upx.sh
+------------------deskop--------------
+install-software dbeaver
+install-software drawio
+install-software filezilla
+install-software filefox
+install-software sublime_text
+install-software vscode
+install-software pycharm
+install-software joplin
+install-software qq
+install-software qqmusic
+install-software redisInsight
+install-software hoppscotch
+-------------------------------------
+
+------------------cli----------------
+install-software docker-compose
+install-software etcd
+install-software gh
+install-software go
+install-software hugo
+install-software java
+install-software protoc
+install-software syncthing
+install-software tigervnc
+install-software upx
+install-software nvm
+-------------------------------------
+```
 
 ### HELP
 `install-software help`

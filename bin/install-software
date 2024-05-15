@@ -5,12 +5,56 @@ function set_cwd() {
     cd ..
 }
 
+function check_tools(){
+    which awk > /dev/null 2>&1 || (echo "please install awk";exit 1)
+    which curl > /dev/null 2>&1 || (echo "please install curl";exit 1)
+}
+
 function update() {
     git pull
 }
 
 function install_nvm() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+}
+
+function help(){
+    me=$(basename $(readlink -nf $0))
+    cat <<EOF >/dev/stdout
+
+------------------update-------------
+${me} update
+-------------------------------------
+
+------------------deskop-------------
+${me} dbeaver
+${me} drawio
+${me} filezilla
+${me} filefox
+${me} sublime_text
+${me} vscode
+${me} pycharm
+${me} joplin
+${me} qq
+${me} qqmusic
+${me} redisInsight
+${me} hoppscotch
+-------------------------------------
+
+------------------cli----------------
+${me} docker-compose
+${me} etcd
+${me} gh
+${me} go
+${me} hugo
+${me} java
+${me} protoc
+${me} syncthing
+${me} tigervnc
+${me} upx
+${me} nvm
+-------------------------------------
+EOF
 }
 
 function main() {
@@ -30,9 +74,6 @@ function main() {
         firefox)
             exec bash firefox.sh $2
         ;;
-        postman)
-            exec bash postman.sh $2
-        ;;
         sublime_text)
             exec bash sublime_text.sh $2
         ;;
@@ -41,9 +82,6 @@ function main() {
         ;;
         pycharm)
             exec bash pycharm.sh $2
-        ;;
-        another_redis_desktop_manager)
-            exec bash another_redis_desktop_manager.sh $2
         ;;
         joplin)
             exec bash joplin.sh $2
@@ -80,17 +118,8 @@ function main() {
         java)
             exec bash java.sh $2
         ;;
-        mysql)
-            exec bash mysql.sh $2
-        ;;
-        node)
-            exec bash node.sh $2
-        ;;
         protoc)
             exec bash protoc.sh $2
-        ;;
-        redis)
-            exec bash redis.sh $2
         ;;
         syncthing)
             exec bash syncthing.sh $2
@@ -101,15 +130,18 @@ function main() {
         upx)
             exec bash upx.sh $2
         ;;
-
         nvm)
             exec install_nvm
         ;;
+        help)
+        help
+        ;;
         *)
-        echo $1
+        help
         ;;
     esac
 }
 
+check_tools
 set_cwd
 main $@
