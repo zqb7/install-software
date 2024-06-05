@@ -189,7 +189,7 @@ class Robot(object):
     def qq(self):
         ack = self.req.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
         if ack.status_code == 200:
-            match = re.search(r'https://dldir1.qq.com/qqfile/qq/QQNT/[a-zA-Z0-9]+/linuxqq_\d+\.\d+\.\d+-\d+_x86_64.AppImage', ack.text)
+            match = re.search(r'https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_\d+\.\d+\.\d+_\d+_x86_64_01.AppImage', ack.text)
             if match:
                 url = match.group()
                 with open('qq.sh', 'r+') as f:
