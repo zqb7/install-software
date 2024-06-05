@@ -1,8 +1,8 @@
-from unittest import TestCase
+import unittest
 from robot import Robot
 
 
-class TestRobot(TestCase):
+class TestRobot(unittest.TestCase):
     robot = Robot()
 
     def test_code_server(self):

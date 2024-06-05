@@ -286,6 +286,8 @@ class Robot(object):
 
     # 比较版本号 latestV是否大于nowV
     def _compare_verion(self,nowV:str, latestV:str) ->bool:
+        if "-rc" in latestV:
+            return False
         nowVersionNumArr = nowV.lstrip("v").split(".")
         latestVersionNumArr = latestV.lstrip("v").split(".")
         
