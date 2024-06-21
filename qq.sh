@@ -2,7 +2,7 @@
 
 SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
 
-FILEURL="https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.8_240520_x86_64_01.AppImage"
+FILEURL="https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.9_240606_x86_64_01.AppImage"
 FILENAME=qq.AppImage
 _main() {
     which sudo >/dev/null && SUDO="sudo"
