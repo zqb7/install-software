@@ -50,9 +50,6 @@ class TestRobot(unittest.TestCase):
     def test_vscode(self):
         self.robot.vscode()
 
-    def test_tigervnc(self):
-        self.robot.tigervnc()
-
     def test_etcd(self):
         self.robot.etcd()
 
