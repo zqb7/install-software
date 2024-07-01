@@ -41,7 +41,6 @@ install-software hugo
 install-software java
 install-software protoc
 install-software syncthing
-install-software tigervnc
 install-software upx
 install-software nvm
 -------------------------------------
