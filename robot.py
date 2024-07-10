@@ -1,4 +1,4 @@
-import requests
+import httpx
 import re
 from typing import TextIO,Tuple
 from git import Repo
@@ -35,7 +35,7 @@ class Robot(object):
             self._change_version_tag_github(f,"jgraph/drawio-desktop")
 
     def firefox(self):
-        ack = requests.get("https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-CN", allow_redirects=False)
+        ack = httpx.get("https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-CN", allow_redirects=False)
         if ack.status_code == 302:
             real_download_url = ack.headers.get('Location')
             match = re.search(r'.*firefox-(.*)\.tar.*',real_download_url)
@@ -64,7 +64,7 @@ class Robot(object):
             self._change_version_tag_github(f,"cli/cli")
 
     def go(self):
-        ack = requests.get('https://go.dev/dl/')
+        ack = httpx.get('https://go.dev/dl/')
         if ack.status_code == 200:
             match = re.search(r'.*download downloadBox.*go(.*)\.linux-amd64.*gz"',ack.text)
             if match:
@@ -112,7 +112,7 @@ class Robot(object):
             self._change_version_tag_github(f,"syncthing/syncthing")
 
     def vscode(self):
-        ack = requests.get('https://code.visualstudio.com/sha/download?build=stable&os=linux-x64', allow_redirects=False)
+        ack = httpx.get('https://code.visualstudio.com/sha/download?build=stable&os=linux-x64', allow_redirects=False)
         if ack.status_code == 302:
             real_download_url = ack.headers.get('Location')
             real_download_url = real_download_url.replace("az764295.vo.msecnd.net/stable","vscode.cdn.azure.cn/stable")
@@ -154,7 +154,7 @@ class Robot(object):
                     print(f"更新成功:vscode_cli {before_commit_id} --> {commit_id}")
 
     def tigervnc(self):
-        ack = requests.get("http://tigervnc.bphinz.com/nightly/nightly.html")
+        ack = httpx.get("http://tigervnc.bphinz.com/nightly/nightly.html")
         if ack.status_code == 200:
             match = re.search(r'>tigervnc-(.*)x86_64.tar.gz', ack.text)
             if match:
@@ -180,13 +180,13 @@ class Robot(object):
             self._change_version_tag_github(f,"laurent22/joplin")
     
     def pycharm(self):
-        ack = requests.get('https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=release', allow_redirects=False)
+        ack = httpx.get('https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=release', allow_redirects=False)
         version = ack.json()['PCP'][0]['version']
         with open('pycharm.sh', 'r+') as f:
             self._update_version(f, version=version)
     
     def qq(self):
-        ack = requests.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
+        ack = httpx.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
         if ack.status_code == 200:
             match = re.search(r'https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_\d+\.\d+\.\d+_\d+_x86_64_01.AppImage', ack.text)
             if match:
@@ -197,7 +197,7 @@ class Robot(object):
                 print(f"更新qq失败,没有提取到下载地址")
 
     def qqmusic(self):
-        ack = requests.get("https://y.qq.com/download/download.html")
+        ack = httpx.get("https://y.qq.com/download/download.html")
         if ack.status_code == 200:
             match = re.search(r'https://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-\d+\.\d+\.\d+.AppImage', ack.text)
             if match:
@@ -233,7 +233,7 @@ class Robot(object):
 
     def _check_for_github_release(self,name:str) ->Tuple[str, bool]:
         url = 'https://api.github.com/repos/{name}/releases/latest'.format(name=name)
-        ack = requests.get(url=url)
+        ack = httpx.get(url=url)
         if ack.status_code == 200:
             return ack.json()['tag_name'],True
         else:
