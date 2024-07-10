@@ -35,7 +35,7 @@ class Robot(object):
             self._change_version_tag_github(f,"jgraph/drawio-desktop")
 
     def firefox(self):
-        ack = httpx.get("https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-CN", allow_redirects=False)
+        ack = httpx.get("https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=zh-CN", follow_redirects=False)
         if ack.status_code == 302:
             real_download_url = ack.headers.get('Location')
             match = re.search(r'.*firefox-(.*)\.tar.*',real_download_url)
@@ -112,7 +112,7 @@ class Robot(object):
             self._change_version_tag_github(f,"syncthing/syncthing")
 
     def vscode(self):
-        ack = httpx.get('https://code.visualstudio.com/sha/download?build=stable&os=linux-x64', allow_redirects=False)
+        ack = httpx.get('https://code.visualstudio.com/sha/download?build=stable&os=linux-x64', follow_redirects=False)
         if ack.status_code == 302:
             real_download_url = ack.headers.get('Location')
             real_download_url = real_download_url.replace("az764295.vo.msecnd.net/stable","vscode.cdn.azure.cn/stable")
@@ -180,7 +180,7 @@ class Robot(object):
             self._change_version_tag_github(f,"laurent22/joplin")
     
     def pycharm(self):
-        ack = httpx.get('https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=release', allow_redirects=False)
+        ack = httpx.get('https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=release', follow_redirects=False)
         version = ack.json()['PCP'][0]['version']
         with open('pycharm.sh', 'r+') as f:
             self._update_version(f, version=version)
