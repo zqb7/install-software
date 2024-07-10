@@ -153,16 +153,6 @@ class Robot(object):
                     f.writelines(lines)
                     print(f"更新成功:vscode_cli {before_commit_id} --> {commit_id}")
 
-    def tigervnc(self):
-        ack = httpx.get("http://tigervnc.bphinz.com/nightly/nightly.html")
-        if ack.status_code == 200:
-            match = re.search(r'>tigervnc-(.*)x86_64.tar.gz', ack.text)
-            if match:
-                fileName = match.group(0).lstrip(">")
-                fileUrl = f'http://tigervnc.bphinz.com/nightly/xc/x86_64/{fileName}'
-                with open("tigervnc.sh", "r+") as f:
-                    self._update_file(f, fileName, fileUrl)
-
     def etcd(self):
         with open("etcd.sh","r+") as f:
             self._change_version_tag_github(f,"etcd-io/etcd")
