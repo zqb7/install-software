@@ -20,7 +20,6 @@ install-software update
 ------------------deskop--------------
 install-software dbeaver
 install-software drawio
-install-software filezilla
 install-software filefox
 install-software sublime_text
 install-software vscode
