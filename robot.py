@@ -178,11 +178,17 @@ class Robot(object):
     def qq(self):
         ack = httpx.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
         if ack.status_code == 200:
-            match = re.search(r'https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_\d+\.\d+\.\d+_\d+_x86_64_01.AppImage', ack.text)
-            if match:
-                url = match.group()
+            pattern = re.compile(r'(https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_(\d+\.\d+\.\d+)[^\s]*)')
+            matches = pattern.findall(ack.text)
+            if matches:
+                url, version = matches[0]
                 with open('qq.sh', 'r+') as f:
-                    self._update_url(f, url)
+                    for line in f.readlines():
+                        if line.startswith("FILEURL"):
+                            matches_2 = pattern.findall(line)
+                            if matches_2 and self._compare_verion(matches_2[0][1],version):
+                                with open('qq.sh', 'r+') as f2:
+                                    self._update_url(f2, url)
             else:
                 print(f"更新qq失败,没有提取到下载地址")
 
