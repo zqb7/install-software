@@ -178,7 +178,7 @@ class Robot(object):
     def qq(self):
         ack = httpx.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
         if ack.status_code == 200:
-            pattern = re.compile(r'(https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_(\d+\.\d+\.\d+)[^\s]*)')
+            pattern = re.compile(r'(https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_(\d+\.\d+\.\d+)_[0-9]{1,6}_x86_\d+_\d+\.AppImage)')
             matches = pattern.findall(ack.text)
             if matches:
                 url, version = matches[0]
