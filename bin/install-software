@@ -27,18 +27,18 @@ ${me} update
 -------------------------------------
 
 ------------------deskop-------------
-${me} dbeaver
-${me} drawio
-${me} filezilla
-${me} filefox
-${me} sublime_text
-${me} vscode
-${me} pycharm
-${me} joplin
-${me} qq
-${me} qqmusic
-${me} redisInsight
-${me} hoppscotch
+${me} dbeaver OR ${me} 1
+${me} drawio OR ${me} 2
+${me} filezilla OR ${me} 3
+${me} filefox OR ${me} 4
+${me} sublime_text OR ${me} 5
+${me} vscode OR ${me} 6
+${me} pycharm OR ${me} 7
+${me} joplin OR ${me} 8
+${me} qq OR ${me}  9
+${me} qqmusic OR ${me} 10
+${me} redisInsight OR ${me} 11
+${me} hoppscotch OR ${me} 12
 -------------------------------------
 
 ------------------cli----------------
@@ -62,40 +62,40 @@ function main() {
         update)
             update
         ;;
-        dbeaver)
+        dbeaver | 1)
             exec bash dbeaver.sh $2
         ;;
-        drawio)
+        drawio | 2)
             exec bash drawio.sh $2
         ;;
-        filezilla)
+        filezilla | 3)
             exec bash filezilla.sh $2
         ;;
-        firefox)
+        firefox | 4)
             exec bash firefox.sh $2
         ;;
-        sublime_text)
+        sublime_text | 5)
             exec bash sublime_text.sh $2
         ;;
-        vscode)
+        vscode | 6)
             exec bash vscode.sh $2
         ;;
-        pycharm)
+        pycharm | 7)
             exec bash pycharm.sh $2
         ;;
-        joplin)
+        joplin | 8)
             exec bash joplin.sh $2
         ;;
-        qq)
+        qq | 9)
             exec bash qq.sh $2
         ;;
-        qqmusic)
+        qqmusic | 10)
             exec bash qqmusic.sh $2
         ;;
-        redisInsight)
+        redisInsight | 11)
             exec bash redisInsight.sh $2
         ;;
-        hoppscotch)
+        hoppscotch | 12)
             exec bash hoppscotch.sh $2
         ;;
 
