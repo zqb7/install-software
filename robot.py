@@ -3,6 +3,9 @@ import re
 from typing import TextIO,Tuple
 from git import Repo
 
+
+httpx_timeout = 10
+
 class Robot(object):
 
     def __init__(self):
@@ -64,7 +67,11 @@ class Robot(object):
             self._change_version_tag_github(f,"cli/cli")
 
     def go(self):
-        ack = httpx.get('https://go.dev/dl/')
+        try:
+            ack = httpx.get('https://go.dev/dl/', timeout=httpx_timeout)
+        except httpx.TimeoutException:
+            print(f"更新go失败,连接超时")
+            return
         if ack.status_code == 200:
             match = re.search(r'.*download downloadBox.*go(.*)\.linux-amd64.*gz"',ack.text)
             if match:
@@ -176,7 +183,11 @@ class Robot(object):
             self._update_version(f, version=version)
     
     def qq(self):
-        ack = httpx.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js")
+        try:
+            ack = httpx.get("https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/linuxQQDownload.js", timeout=httpx_timeout)
+        except httpx.TimeoutException:
+            print(f"更新qq失败,连接超时")
+            return
         if ack.status_code == 200:
             pattern = re.compile(r'(https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_(\d+\.\d+\.\d+)_[0-9]{1,6}_x86_\d+_\d+\.AppImage)')
             matches = pattern.findall(ack.text)
