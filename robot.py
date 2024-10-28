@@ -204,7 +204,11 @@ class Robot(object):
                 print(f"更新qq失败,没有提取到下载地址")
 
     def qqmusic(self):
-        ack = httpx.get("https://y.qq.com/download/download.html")
+        try:
+            ack = httpx.get("https://y.qq.com/download/download.html")
+        except httpx.TimeoutException:
+            print(f'更新qqmusic失败,连接超时')
+            return
         if ack.status_code == 200:
             match = re.search(r'https://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-\d+\.\d+\.\d+.AppImage', ack.text)
             if match:
