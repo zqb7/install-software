@@ -2,7 +2,7 @@
 
 SHELL_FOLDER=$(cd $(dirname ${BASH_SOURCE[0]});pwd)
 
-fileUrl="https://vscode.download.prss.microsoft.com/dbazure/download/stable/33fc5a94a3f99ebe7087e8fe79fbe1d37a251016/code-stable-x64-1738712263.tar.gz"
+fileUrl="https://vscode.download.prss.microsoft.com/dbazure/download/stable/e249dada235c2083c83813bd65b7f4707fb97b76/code-stable-x64-1739196321.tar.gz"
 fileName=`echo $fileUrl|awk -F "/" '{print $NF}'`
 
 _main() {
